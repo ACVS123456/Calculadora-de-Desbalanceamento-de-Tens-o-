@@ -1,0 +1,2756 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>Calculadora de Desbalanceamento de Tensão</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#eef3f7;
+    color:#17212b;
+    font-family:Arial,Helvetica,sans-serif;
+}
+
+.app{
+    width:100%;
+    max-width:850px;
+    margin:auto;
+    padding:14px;
+}
+
+.card{
+    background:#fff;
+    border-radius:18px;
+    padding:20px;
+    margin-bottom:15px;
+    box-shadow:0 5px 18px rgba(0,0,0,.08);
+}
+
+h1{
+    margin:0 0 8px;
+    font-size:25px;
+}
+
+h2{
+    margin:0 0 14px;
+    font-size:19px;
+}
+
+h3{
+    margin:20px 0 10px;
+    font-size:17px;
+}
+
+.sub{
+    color:#5d6974;
+    font-size:14px;
+    line-height:1.6;
+}
+
+.inputs{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:12px;
+    margin-top:20px;
+}
+
+label{
+    display:block;
+    font-size:14px;
+    font-weight:bold;
+}
+
+input{
+    width:100%;
+    margin-top:7px;
+    padding:14px;
+    border:2px solid #cbd5dc;
+    border-radius:11px;
+    font-size:18px;
+    outline:none;
+    background:#fff;
+}
+
+input:focus{
+    border-color:#087f8c;
+}
+
+button{
+    width:100%;
+    border:0;
+    border-radius:11px;
+    padding:15px;
+    margin-top:15px;
+    background:#087f8c;
+    color:#fff;
+    font-size:17px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+button:active{
+    transform:scale(.99);
+}
+
+.reset{
+    background:#66737d;
+}
+
+.row{
+    display:grid;
+    grid-template-columns:1.1fr 1fr 1.5fr;
+    gap:8px;
+    padding:12px 6px;
+    border-bottom:1px solid #e2e7eb;
+    align-items:center;
+}
+
+.head{
+    background:#0b79a3;
+    color:white;
+    font-weight:bold;
+    border-radius:8px 8px 0 0;
+}
+
+.num{
+    text-align:right;
+    font-weight:bold;
+}
+
+.positive{
+    color:#08752c;
+}
+
+.negative{
+    color:#a51e1e;
+}
+
+.neutral{
+    color:#555;
+}
+
+.mean{
+    margin:15px 0;
+    padding:16px;
+    background:#f1f5f7;
+    border-radius:12px;
+    text-align:center;
+    font-size:24px;
+    font-weight:bold;
+}
+
+.result{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+}
+
+.box{
+    padding:15px;
+    border-radius:12px;
+    background:#f3f6f8;
+}
+
+.box small{
+    display:block;
+    margin-bottom:7px;
+    color:#65717d;
+}
+
+.value{
+    font-size:23px;
+    font-weight:bold;
+}
+
+.status{
+    margin-top:14px;
+    padding:17px;
+    border-radius:12px;
+    text-align:center;
+    font-size:18px;
+    font-weight:bold;
+    line-height:1.45;
+}
+
+.ok{
+    background:#def4e4;
+    color:#17652b;
+}
+
+.bad{
+    background:#ffe0e0;
+    color:#9b1c1c;
+}
+
+.thermal{
+    margin-top:14px;
+    padding:17px;
+    border-radius:12px;
+    background:#fff3d6;
+    border:2px solid #e7b84b;
+}
+
+.thermal-title{
+    font-weight:bold;
+    font-size:17px;
+}
+
+.thermal-value{
+    margin-top:7px;
+    font-size:30px;
+    font-weight:bold;
+    color:#a05a00;
+}
+
+.note{
+    color:#64717c;
+    font-size:13px;
+    line-height:1.6;
+}
+
+.formula{
+    padding:15px;
+    border-radius:11px;
+    background:#f7f7f7;
+    font-family:monospace;
+    font-size:14px;
+    line-height:1.9;
+    overflow-x:auto;
+}
+
+.wave-card{
+    margin-top:12px;
+    padding:12px;
+    border-radius:14px;
+    background:#f7fafc;
+    border:1px solid #dce5ea;
+}
+
+.canvas-wrap{
+    position:relative;
+    width:100%;
+    height:390px;
+    overflow:hidden;
+    border-radius:10px;
+    background:#fff;
+}
+
+canvas{
+    display:block;
+    width:100%;
+    height:100%;
+    background:#fff;
+}
+
+.wave-legend{
+    display:flex;
+    justify-content:center;
+    gap:22px;
+    flex-wrap:wrap;
+    margin-top:12px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.dot{
+    display:inline-block;
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    margin-right:5px;
+}
+
+.rs-dot{
+    background:#087f8c;
+}
+
+.rt-dot{
+    background:#a51e1e;
+}
+
+.st-dot{
+    background:#6a3dad;
+}
+
+.fase-info,
+.current-info,
+.interpretacao,
+.recomendacoes{
+    margin-top:14px;
+    padding:15px;
+    border-radius:12px;
+    background:#f4f7f9;
+    line-height:1.65;
+    font-size:14px;
+}
+
+.recomendacoes{
+    border:1px solid #dce4e9;
+}
+
+.recomendacoes ul{
+    margin:10px 0 0 20px;
+    padding:0;
+}
+
+.recomendacoes li{
+    margin-bottom:7px;
+}
+
+.alerta-manutencao{
+    margin-top:14px;
+    padding:16px;
+    border-radius:12px;
+    font-weight:bold;
+    line-height:1.5;
+}
+
+.alerta-ok{
+    background:#def4e4;
+    color:#17652b;
+}
+
+.alerta-critico{
+    background:#ffe0e0;
+    color:#9b1c1c;
+}
+
+.current-result{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:10px;
+    margin-top:14px;
+}
+
+.current-box{
+    background:#fff;
+    border:1px solid #dde5e9;
+    border-radius:11px;
+    padding:13px;
+    text-align:center;
+}
+
+.current-box small{
+    display:block;
+    color:#65717d;
+    margin-bottom:6px;
+}
+
+.current-value{
+    font-size:21px;
+    font-weight:bold;
+}
+
+.current-percent{
+    margin-top:5px;
+    font-size:14px;
+    font-weight:bold;
+}
+
+.cycle-table{
+    width:100%;
+    border-collapse:collapse;
+    margin-top:14px;
+    font-size:13px;
+}
+
+.cycle-table th{
+    background:#0b79a3;
+    color:#fff;
+    padding:9px;
+    text-align:center;
+}
+
+.cycle-table td{
+    border-bottom:1px solid #e1e6ea;
+    padding:8px;
+    text-align:center;
+}
+
+.cycle-table tr:nth-child(even){
+    background:#f7fafc;
+}
+
+.cycle-good{
+    color:#17652b;
+    font-weight:bold;
+}
+
+.cycle-bad{
+    color:#9b1c1c;
+    font-weight:bold;
+}
+
+.footer{
+    text-align:center;
+    color:#74818c;
+    font-size:12px;
+    padding:12px;
+}
+
+@media(max-width:600px){
+
+    .app{
+        padding:9px;
+    }
+
+    .card{
+        padding:15px;
+        border-radius:14px;
+    }
+
+    h1{
+        font-size:22px;
+    }
+
+    .inputs{
+        grid-template-columns:1fr;
+    }
+
+    .result{
+        grid-template-columns:1fr;
+    }
+
+    .current-result{
+        grid-template-columns:1fr;
+    }
+
+    .row{
+        grid-template-columns:1fr 1fr 1.3fr;
+        font-size:13px;
+    }
+
+    .mean{
+        font-size:21px;
+    }
+
+    .canvas-wrap{
+        height:330px;
+    }
+
+    .cycle-table{
+        font-size:11px;
+    }
+
+    .cycle-table th,
+    .cycle-table td{
+        padding:6px 3px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="app">
+
+<!-- =====================================================
+     ENTRADAS
+===================================================== -->
+
+<div class="card">
+
+<h1>⚡ Calculadora de Desbalanceamento de Tensão</h1>
+
+<div class="sub">
+
+Informe somente as três tensões medidas entre fases:
+
+<b>R–S, R–T e S–T.</b>
+
+<br><br>
+
+A calculadora calcula automaticamente:
+
+<br>
+• tensão média;
+<br>
+• diferença de cada leitura para a média;
+<br>
+• maior desvio absoluto;
+<br>
+• desbalanceamento em porcentagem;
+<br>
+• limite máximo de 2%;
+<br>
+• índice quadrático de impacto térmico;
+<br>
+• gráfico senoidal das três tensões;
+<br>
+• análise ciclo a ciclo;
+<br>
+• nível relativo de corrente.
+
+</div>
+
+<div class="inputs">
+
+<div>
+<label for="rs">R – S (V)</label>
+<input
+    id="rs"
+    type="number"
+    step="0.01"
+    inputmode="decimal"
+    placeholder="Digite a leitura">
+</div>
+
+<div>
+<label for="rt">R – T (V)</label>
+<input
+    id="rt"
+    type="number"
+    step="0.01"
+    inputmode="decimal"
+    placeholder="Digite a leitura">
+</div>
+
+<div>
+<label for="st">S – T (V)</label>
+<input
+    id="st"
+    type="number"
+    step="0.01"
+    inputmode="decimal"
+    placeholder="Digite a leitura">
+</div>
+
+</div>
+
+<button onclick="calcular()">
+⚡ CALCULAR DESBALANCEAMENTO
+</button>
+
+<button class="reset" onclick="limpar()">
+↺ LIMPAR
+</button>
+
+</div>
+
+
+<!-- =====================================================
+     RESULTADOS
+===================================================== -->
+
+<div
+class="card"
+id="resultCard"
+style="display:none"
+>
+
+<h2>1. Leituras e diferença para a média</h2>
+
+<div class="row head">
+<div>Fases</div>
+<div class="num">Leitura</div>
+<div class="num">Média − Leitura</div>
+</div>
+
+<div class="row">
+<div>R – S</div>
+<div class="num" id="vrs"></div>
+<div class="num" id="drs"></div>
+</div>
+
+<div class="row">
+<div>R – T</div>
+<div class="num" id="vrt"></div>
+<div class="num" id="drt"></div>
+</div>
+
+<div class="row">
+<div>S – T</div>
+<div class="num" id="vst"></div>
+<div class="num" id="dst"></div>
+</div>
+
+<div class="mean">
+Tensão média =
+<span id="media"></span> V
+</div>
+
+
+<!-- =====================================================
+     DESBALANCEAMENTO
+===================================================== -->
+
+<h2>2. Resultado do desbalanceamento</h2>
+
+<div class="result">
+
+<div class="box">
+<small>Maior diferença absoluta</small>
+<div class="value" id="maior"></div>
+</div>
+
+<div class="box">
+<small>Desbalanceamento</small>
+<div class="value" id="percent"></div>
+</div>
+
+</div>
+
+<div id="status" class="status"></div>
+
+
+<!-- =====================================================
+     ÍNDICE TÉRMICO
+===================================================== -->
+
+<h2 style="margin-top:24px">
+3. Índice quadrático de impacto térmico
+</h2>
+
+<div class="thermal">
+
+<div class="thermal-title">
+2 × (% de desbalanceamento)²
+</div>
+
+<div class="thermal-value" id="thermal"></div>
+
+<div class="note">
+Este índice é uma representação matemática
+do crescimento quadrático adotado nesta calculadora.
+<br><br>
+Ele não representa diretamente a temperatura real
+do motor nem substitui uma medição térmica.
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     GRÁFICO DE TENSÃO
+===================================================== -->
+
+<h2 style="margin-top:25px">
+4. Gráfico senoidal das tensões
+</h2>
+
+<div class="wave-card">
+
+<div class="canvas-wrap">
+<canvas id="graficoSenoidal"></canvas>
+</div>
+
+<div class="wave-legend">
+
+<div>
+<span class="dot rs-dot"></span>
+R–S
+</div>
+
+<div>
+<span class="dot rt-dot"></span>
+R–T
+</div>
+
+<div>
+<span class="dot st-dot"></span>
+S–T
+</div>
+
+</div>
+
+<div id="faseInfo" class="fase-info"></div>
+
+</div>
+
+
+<!-- =====================================================
+     CICLO A CICLO
+===================================================== -->
+
+<h2 style="margin-top:25px">
+5. Desbalanceamento por ciclo da onda
+</h2>
+
+<div class="wave-card">
+
+<div class="note">
+
+A tabela mostra, em diferentes pontos do ciclo,
+o valor instantâneo normalizado de cada senoide
+e o desvio relativo entre as três amplitudes.
+
+A defasagem de 120° é uma representação matemática
+de um sistema trifásico equilibrado.
+
+</div>
+
+<div style="overflow-x:auto">
+
+<table class="cycle-table">
+
+<thead>
+
+<tr>
+<th>Ciclo</th>
+<th>Ângulo</th>
+<th>R–S</th>
+<th>R–T</th>
+<th>S–T</th>
+<th>Desvio</th>
+</tr>
+
+</thead>
+
+<tbody id="cycleBody">
+</tbody>
+
+</table>
+
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     CORRENTE
+===================================================== -->
+
+<h2 style="margin-top:25px">
+6. Nível relativo de corrente
+</h2>
+
+<div class="wave-card">
+
+<div class="note">
+
+Este cálculo representa somente um índice relativo.
+
+Para uma mesma potência aproximada:
+
+<br><br>
+
+<b>I ≈ P ÷ (√3 × V)</b>
+
+<br><br>
+
+Portanto:
+
+<br>
+<b>menor tensão → maior corrente relativa</b>
+
+<br>
+<b>maior tensão → menor corrente relativa</b>
+
+<br><br>
+
+Não é uma medição de corrente em amperes.
+
+</div>
+
+<div class="canvas-wrap">
+<canvas id="graficoCorrente"></canvas>
+</div>
+
+<div class="current-result">
+
+<div class="current-box">
+<small>R–S</small>
+<div class="current-value" id="corrRS"></div>
+<div class="current-percent" id="corrRSPerc"></div>
+</div>
+
+<div class="current-box">
+<small>R–T</small>
+<div class="current-value" id="corrRT"></div>
+<div class="current-percent" id="corrRTPerc"></div>
+</div>
+
+<div class="current-box">
+<small>S–T</small>
+<div class="current-value" id="corrST"></div>
+<div class="current-percent" id="corrSTPerc"></div>
+</div>
+
+</div>
+
+<div id="correnteInfo" class="current-info"></div>
+
+</div>
+
+
+<!-- =====================================================
+     INTERPRETAÇÃO
+===================================================== -->
+
+<h2 style="margin-top:25px">
+7. Interpretação automática
+</h2>
+
+<div id="interpretacao" class="interpretacao"></div>
+
+
+<!-- =====================================================
+     RECOMENDAÇÕES
+===================================================== -->
+
+<h2 style="margin-top:25px">
+8. Recomendações de inspeção
+</h2>
+
+<div id="recomendacoes" class="recomendacoes"></div>
+
+<div
+id="alertaManutencao"
+class="alerta-manutencao">
+</div>
+
+</div>
+
+
+<!-- =====================================================
+     FÓRMULAS
+===================================================== -->
+
+<div class="card">
+
+<h2>9. Fórmulas utilizadas</h2>
+
+<div class="formula">
+
+Tensão média =
+(R–S + R–T + S–T) ÷ 3
+
+<br><br>
+
+Diferença R–S =
+Média − R–S
+
+<br>
+
+Diferença R–T =
+Média − R–T
+
+<br>
+
+Diferença S–T =
+Média − S–T
+
+<br><br>
+
+Maior diferença =
+máximo(|Diferença R–S|,
+|Diferença R–T|,
+|Diferença S–T|)
+
+<br><br>
+
+Desbalanceamento (%) =
+(Maior diferença × 100) ÷ Média
+
+<br><br>
+
+Índice térmico =
+2 × (% desbalanceamento)²
+
+<br><br>
+
+Corrente relativa =
+(Média ÷ Tensão da fase) × 100
+
+<br><br>
+
+Limite de referência =
+2%
+
+</div>
+
+<br>
+
+<div class="note">
+
+<b>Exemplo somente para demonstração da fórmula:</b>
+
+<br><br>
+
+208 V + 222 V + 200 V = 630 V
+
+<br>
+
+630 ÷ 3 = <b>210 V</b>
+
+<br><br>
+
+R–S:
+
+210 − 208 = <b>+2 V</b>
+
+<br>
+
+R–T:
+
+210 − 222 = <b>−12 V</b>
+
+<br>
+
+S–T:
+
+210 − 200 = <b>+10 V</b>
+
+<br><br>
+
+Maior diferença absoluta:
+
+<b>12 V</b>
+
+<br><br>
+
+Desbalanceamento:
+
+12 ÷ 210 × 100
+
+=
+
+<b>5,71%</b>
+
+<br><br>
+
+Portanto:
+
+<b>5,71% > 2%</b>
+
+<br>
+
+Resultado:
+
+<b>ACIMA DO LIMITE DE REFERÊNCIA.</b>
+
+</div>
+
+</div>
+
+
+<div class="footer">
+
+Calculadora de Desbalanceamento de Tensão
+<br>
+Análise de tensão + desvio por fase + análise ciclo a ciclo
++ índice térmico + corrente relativa.
+
+</div>
+
+</div>
+
+
+<script>
+
+/* =====================================================
+   CONFIGURAÇÕES
+===================================================== */
+
+const LIMITE = 2;
+
+const CORES = {
+    rs: '#087f8c',
+    rt: '#a51e1e',
+    st: '#6a3dad'
+};
+
+
+/* =====================================================
+   FORMATAÇÃO
+===================================================== */
+
+function valor(id){
+
+    return parseFloat(
+        document.getElementById(id).value
+    );
+
+}
+
+
+function formatar(numero){
+
+    return Number(numero)
+        .toFixed(2)
+        .replace('.',',');
+
+}
+
+
+function formatarSinal(numero){
+
+    if(numero > 0){
+
+        return '+' +
+            formatar(numero) +
+            ' V';
+
+    }
+
+    if(numero < 0){
+
+        return '−' +
+            formatar(Math.abs(numero)) +
+            ' V';
+
+    }
+
+    return '0,00 V';
+
+}
+
+
+function classeDiferenca(numero){
+
+    if(numero > 0){
+        return 'positive';
+    }
+
+    if(numero < 0){
+        return 'negative';
+    }
+
+    return 'neutral';
+
+}
+
+
+function mostrarDiferenca(id,numero){
+
+    const el =
+        document.getElementById(id);
+
+    el.textContent =
+        formatarSinal(numero);
+
+    el.className =
+        'num ' +
+        classeDiferenca(numero);
+
+}
+
+
+/* =====================================================
+   PREPARAÇÃO CORRETA DO CANVAS
+   RESOLVE O PROBLEMA DO GRÁFICO FORA DA TELA
+===================================================== */
+
+function prepararCanvas(canvas){
+
+    const rect =
+        canvas.getBoundingClientRect();
+
+    const largura =
+        Math.max(320, rect.width);
+
+    const altura =
+        Math.max(280, rect.height);
+
+    const dpr =
+        window.devicePixelRatio || 1;
+
+    canvas.width =
+        Math.round(largura * dpr);
+
+    canvas.height =
+        Math.round(altura * dpr);
+
+    const ctx =
+        canvas.getContext('2d');
+
+    ctx.setTransform(
+        dpr,
+        0,
+        0,
+        dpr,
+        0,
+        0
+    );
+
+    return {
+        ctx:ctx,
+        W:largura,
+        H:altura
+    };
+
+}
+
+
+/* =====================================================
+   GRÁFICO SENOIDAL
+===================================================== */
+
+function desenharGraficoTensao(
+    rs,
+    rt,
+    st,
+    media
+){
+
+    const canvas =
+        document.getElementById(
+            'graficoSenoidal'
+        );
+
+    const dados =
+        prepararCanvas(canvas);
+
+    const ctx =
+        dados.ctx;
+
+    const W =
+        dados.W;
+
+    const H =
+        dados.H;
+
+    ctx.clearRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+    ctx.fillStyle =
+        '#ffffff';
+
+    ctx.fillRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+
+    /*
+       MARGENS
+    */
+
+    const margemEsquerda = 52;
+    const margemDireita = 18;
+    const margemSuperior = 50;
+    const margemInferior = 35;
+
+    const grafW =
+        W -
+        margemEsquerda -
+        margemDireita;
+
+    const grafH =
+        H -
+        margemSuperior -
+        margemInferior;
+
+    const centroY =
+        margemSuperior +
+        grafH / 2;
+
+
+    /*
+       ESCALA AUTOMÁTICA
+
+       Usa a maior tensão relativa
+       para garantir que nenhuma onda
+       saia da área do gráfico.
+    */
+
+    const maiorTensao =
+        Math.max(
+            Math.abs(rs),
+            Math.abs(rt),
+            Math.abs(st)
+        );
+
+    const menorTensao =
+        Math.min(
+            Math.abs(rs),
+            Math.abs(rt),
+            Math.abs(st)
+        );
+
+    /*
+       amplitude normalizada.
+       A maior onda nunca ultrapassa 82%
+       da altura disponível.
+    */
+
+    const amplitudeMax =
+        grafH * 0.40;
+
+    const escalaVertical =
+        amplitudeMax /
+        maiorTensao;
+
+
+    /*
+       GRADE HORIZONTAL
+    */
+
+    ctx.lineWidth = 1;
+
+    ctx.strokeStyle =
+        '#e4e9ed';
+
+    const linhas =
+        8;
+
+    for(let i=0;i<=linhas;i++){
+
+        const y =
+            margemSuperior +
+            (grafH / linhas) * i;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            margemEsquerda,
+            y
+        );
+
+        ctx.lineTo(
+            W - margemDireita,
+            y
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    /*
+       GRADE VERTICAL
+    */
+
+    for(let i=0;i<=8;i++){
+
+        const x =
+            margemEsquerda +
+            (grafW / 8) * i;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            x,
+            margemSuperior
+        );
+
+        ctx.lineTo(
+            x,
+            H - margemInferior
+        );
+
+        ctx.stroke();
+
+    }
+
+
+    /*
+       EIXO CENTRAL
+    */
+
+    ctx.strokeStyle =
+        '#69757e';
+
+    ctx.lineWidth = 1.5;
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        margemEsquerda,
+        centroY
+    );
+
+    ctx.lineTo(
+        W - margemDireita,
+        centroY
+    );
+
+    ctx.stroke();
+
+
+    /*
+       SENOIDES
+    */
+
+    function desenharSenoide(
+        tensao,
+        fase,
+        cor,
+        nome
+    ){
+
+        const amplitude =
+            Math.abs(tensao) *
+            escalaVertical;
+
+        ctx.strokeStyle =
+            cor;
+
+        ctx.lineWidth = 3;
+
+        ctx.beginPath();
+
+        const pontos = 700;
+
+        for(let i=0;i<=pontos;i++){
+
+            const x =
+                margemEsquerda +
+                (grafW / pontos) * i;
+
+            /*
+               2 ciclos completos
+            */
+
+            const angulo =
+                (i / pontos) *
+                Math.PI * 4 +
+                fase;
+
+            const y =
+                centroY -
+                Math.sin(angulo) *
+                amplitude;
+
+            if(i === 0){
+
+                ctx.moveTo(
+                    x,
+                    y
+                );
+
+            }else{
+
+                ctx.lineTo(
+                    x,
+                    y
+                );
+
+            }
+
+        }
+
+        ctx.stroke();
+
+    }
+
+
+    /*
+       120° ENTRE AS FASES
+    */
+
+    desenharSenoide(
+        rs,
+        0,
+        CORES.rs,
+        'R–S'
+    );
+
+    desenharSenoide(
+        rt,
+        -2 * Math.PI / 3,
+        CORES.rt,
+        'R–T'
+    );
+
+    desenharSenoide(
+        st,
+        2 * Math.PI / 3,
+        CORES.st,
+        'S–T'
+    );
+
+
+    /*
+       TÍTULO
+    */
+
+    ctx.textAlign =
+        'center';
+
+    ctx.textBaseline =
+        'middle';
+
+    ctx.font =
+        'bold 15px Arial';
+
+    ctx.fillStyle =
+        CORES.rs;
+
+    ctx.fillText(
+        'R–S ' + formatar(rs) + ' V',
+        W * 0.20,
+        23
+    );
+
+    ctx.fillStyle =
+        CORES.rt;
+
+    ctx.fillText(
+        'R–T ' + formatar(rt) + ' V',
+        W * 0.50,
+        23
+    );
+
+    ctx.fillStyle =
+        CORES.st;
+
+    ctx.fillText(
+        'S–T ' + formatar(st) + ' V',
+        W * 0.80,
+        23
+    );
+
+
+    /*
+       IDENTIFICAÇÃO DOS EIXOS
+    */
+
+    ctx.fillStyle =
+        '#5d6974';
+
+    ctx.font =
+        '12px Arial';
+
+    ctx.textAlign =
+        'left';
+
+    ctx.fillText(
+        '+V',
+        8,
+        margemSuperior + 5
+    );
+
+    ctx.fillText(
+        '0',
+        15,
+        centroY
+    );
+
+    ctx.fillText(
+        '−V',
+        8,
+        H - margemInferior
+    );
+
+
+    /*
+       INFORMAÇÃO DE ESCALA
+    */
+
+    ctx.textAlign =
+        'right';
+
+    ctx.fillStyle =
+        '#59656e';
+
+    ctx.font =
+        '12px Arial';
+
+    ctx.fillText(
+        'Escala automática • máximo = ' +
+        formatar(maiorTensao) +
+        ' V',
+        W - 10,
+        H - 10
+    );
+
+}
+
+
+/* =====================================================
+   ANÁLISE CICLO A CICLO
+===================================================== */
+
+function calcularCiclos(
+    rs,
+    rt,
+    st
+){
+
+    const tbody =
+        document.getElementById(
+            'cycleBody'
+        );
+
+    tbody.innerHTML = '';
+
+    /*
+       12 pontos por ciclo.
+
+       O cálculo é feito com as amplitudes
+       das três tensões e suas defasagens.
+    */
+
+    const pontos = 12;
+
+    for(let i=0;i<pontos;i++){
+
+        const angulo =
+            i * 30;
+
+        const rad =
+            angulo * Math.PI / 180;
+
+        const v1 =
+            rs *
+            Math.sin(rad);
+
+        const v2 =
+            rt *
+            Math.sin(
+                rad -
+                2 * Math.PI / 3
+            );
+
+        const v3 =
+            st *
+            Math.sin(
+                rad +
+                2 * Math.PI / 3
+            );
+
+
+        /*
+           Para avaliar o desbalanceamento
+           naquele ponto, usamos os módulos
+           instantâneos.
+
+           Evitamos dividir por zero perto
+           dos cruzamentos da onda.
+        */
+
+        const abs1 =
+            Math.abs(v1);
+
+        const abs2 =
+            Math.abs(v2);
+
+        const abs3 =
+            Math.abs(v3);
+
+        const valores =
+            [abs1,abs2,abs3];
+
+        const maior =
+            Math.max(...valores);
+
+        const menor =
+            Math.min(...valores);
+
+        let desvio = 0;
+
+        if(
+            maior + menor > 0
+        ){
+
+            /*
+               índice relativo de diferença
+            */
+
+            desvio =
+                (
+                    (maior - menor) /
+                    (
+                        (maior + menor) / 2
+                    )
+                ) * 100;
+
+        }
+
+
+        const tr =
+            document.createElement('tr');
+
+        const classe =
+            desvio <= LIMITE
+            ? 'cycle-good'
+            : 'cycle-bad';
+
+
+        tr.innerHTML =
+
+            '<td>' +
+            (i + 1) +
+            '</td>' +
+
+            '<td>' +
+            angulo +
+            '°' +
+            '</td>' +
+
+            '<td>' +
+            formatar(v1) +
+            ' V' +
+            '</td>' +
+
+            '<td>' +
+            formatar(v2) +
+            ' V' +
+            '</td>' +
+
+            '<td>' +
+            formatar(v3) +
+            ' V' +
+            '</td>' +
+
+            '<td class="' +
+            classe +
+            '">' +
+            formatar(desvio) +
+            '%' +
+            '</td>';
+
+        tbody.appendChild(tr);
+
+    }
+
+}
+
+
+/* =====================================================
+   GRÁFICO DE CORRENTE RELATIVA
+===================================================== */
+
+function desenharGraficoCorrente(
+    rs,
+    rt,
+    st,
+    media
+){
+
+    const canvas =
+        document.getElementById(
+            'graficoCorrente'
+        );
+
+    const dados =
+        prepararCanvas(canvas);
+
+    const ctx =
+        dados.ctx;
+
+    const W =
+        dados.W;
+
+    const H =
+        dados.H;
+
+
+    ctx.clearRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+    ctx.fillStyle =
+        '#ffffff';
+
+    ctx.fillRect(
+        0,
+        0,
+        W,
+        H
+    );
+
+
+    const valores = [
+
+        media / rs * 100,
+
+        media / rt * 100,
+
+        media / st * 100
+
+    ];
+
+
+    const maior =
+        Math.max(...valores);
+
+    const maxEscala =
+        Math.max(
+            110,
+            maior * 1.18
+        );
+
+
+    const topo = 55;
+
+    const base =
+        H - 55;
+
+    const altura =
+        base - topo;
+
+
+    /*
+       GRADE
+    */
+
+    ctx.strokeStyle =
+        '#e2e7eb';
+
+    ctx.lineWidth = 1;
+
+    for(let i=0;i<=5;i++){
+
+        const valor =
+            maxEscala / 5 * i;
+
+        const y =
+            base -
+            (valor / maxEscala) *
+            altura;
+
+        ctx.beginPath();
+
+        ctx.moveTo(
+            45,
+            y
+        );
+
+        ctx.lineTo(
+            W - 20,
+            y
+        );
+
+        ctx.stroke();
+
+        ctx.fillStyle =
+            '#65717d';
+
+        ctx.font =
+            '11px Arial';
+
+        ctx.textAlign =
+            'left';
+
+        ctx.fillText(
+            formatar(valor) + '%',
+            5,
+            y - 3
+        );
+
+    }
+
+
+    /*
+       BARRAS
+    */
+
+    const largura =
+        Math.min(
+            100,
+            W * 0.18
+        );
+
+    const xs = [
+
+        W * 0.22 -
+        largura / 2,
+
+        W * 0.50 -
+        largura / 2,
+
+        W * 0.78 -
+        largura / 2
+
+    ];
+
+
+    const nomes = [
+        'R–S',
+        'R–T',
+        'S–T'
+    ];
+
+    const cores = [
+        CORES.rs,
+        CORES.rt,
+        CORES.st
+    ];
+
+
+    for(let i=0;i<3;i++){
+
+        const valor =
+            valores[i];
+
+        const alturaBarra =
+            (
+                valor /
+                maxEscala
+            ) * altura;
+
+        const y =
+            base -
+            alturaBarra;
+
+
+        ctx.fillStyle =
+            cores[i];
+
+        ctx.fillRect(
+            xs[i],
+            y,
+            largura,
+            alturaBarra
+        );
+
+
+        ctx.fillStyle =
+            '#17212b';
+
+        ctx.font =
+            'bold 14px Arial';
+
+        ctx.textAlign =
+            'center';
+
+        ctx.fillText(
+            formatar(valor) + '%',
+            xs[i] +
+            largura / 2,
+            Math.max(
+                43,
+                y - 9
+            )
+        );
+
+
+        ctx.font =
+            'bold 13px Arial';
+
+        ctx.fillText(
+            nomes[i],
+            xs[i] +
+            largura / 2,
+            base + 22
+        );
+
+    }
+
+
+    /*
+       LINHA 100%
+    */
+
+    const y100 =
+        base -
+        (100 / maxEscala) *
+        altura;
+
+
+    ctx.strokeStyle =
+        '#333';
+
+    ctx.setLineDash([
+        6,
+        5
+    ]);
+
+    ctx.beginPath();
+
+    ctx.moveTo(
+        45,
+        y100
+    );
+
+    ctx.lineTo(
+        W - 20,
+        y100
+    );
+
+    ctx.stroke();
+
+    ctx.setLineDash([]);
+
+
+    ctx.fillStyle =
+        '#333';
+
+    ctx.font =
+        'bold 11px Arial';
+
+    ctx.textAlign =
+        'right';
+
+    ctx.fillText(
+        '100% = média',
+        W - 20,
+        y100 - 7
+    );
+
+
+    ctx.textAlign =
+        'center';
+
+    ctx.font =
+        'bold 15px Arial';
+
+    ctx.fillStyle =
+        '#17212b';
+
+    ctx.fillText(
+        'NÍVEL RELATIVO DE CORRENTE',
+        W / 2,
+        22
+    );
+
+}
+
+
+/* =====================================================
+   RESULTADOS DE CORRENTE
+===================================================== */
+
+function mostrarCorrente(
+    rs,
+    rt,
+    st,
+    media
+){
+
+    const valores = [
+
+        media / rs * 100,
+
+        media / rt * 100,
+
+        media / st * 100
+
+    ];
+
+
+    const ids = [
+        'corrRS',
+        'corrRT',
+        'corrST'
+    ];
+
+
+    const percIds = [
+        'corrRSPerc',
+        'corrRTPerc',
+        'corrSTPerc'
+    ];
+
+
+    for(let i=0;i<3;i++){
+
+        document.getElementById(
+            ids[i]
+        ).textContent =
+            formatar(valores[i]) +
+            '%';
+
+
+        const diferenca =
+            valores[i] - 100;
+
+
+        document.getElementById(
+            percIds[i]
+        ).textContent =
+
+            (diferenca >= 0 ? '+' : '') +
+
+            formatar(diferenca) +
+
+            '% em relação à média';
+
+    }
+
+
+    const maior =
+        Math.max(...valores);
+
+    const menor =
+        Math.min(...valores);
+
+
+    const nomes = [
+        'R–S',
+        'R–T',
+        'S–T'
+    ];
+
+
+    const faseMaior =
+        nomes[
+            valores.indexOf(maior)
+        ];
+
+    const faseMenor =
+        nomes[
+            valores.indexOf(menor)
+        ];
+
+
+    document.getElementById(
+        'correnteInfo'
+    ).innerHTML =
+
+        '⚡ <b>Maior nível relativo:</b> ' +
+        faseMaior +
+        ' — ' +
+        formatar(maior) +
+        '%' +
+
+        '<br><br>' +
+
+        '🔻 <b>Menor nível relativo:</b> ' +
+        faseMenor +
+        ' — ' +
+        formatar(menor) +
+        '%' +
+
+        '<br><br>' +
+
+        '100% representa a corrente relativa ' +
+        'associada à tensão média.';
+
+}
+
+
+/* =====================================================
+   INTERPRETAÇÃO
+===================================================== */
+
+function mostrarInterpretacao(
+    percentual,
+    impacto,
+    maiorFase,
+    menorFase
+){
+
+    const el =
+        document.getElementById(
+            'interpretacao'
+        );
+
+
+    if(percentual <= LIMITE){
+
+        el.innerHTML =
+
+            '<b>🟢 DESBALANCEAMENTO DENTRO DO LIMITE</b>' +
+
+            '<br><br>' +
+
+            'O desbalanceamento calculado foi de ' +
+
+            '<b>' +
+            formatar(percentual) +
+            '%</b>.' +
+
+            '<br><br>' +
+
+            'O resultado está dentro do limite de referência ' +
+            'de <b>2%</b>.' +
+
+            '<br><br>' +
+
+            'Maior desvio encontrado na fase: ' +
+
+            '<b>' +
+            maiorFase +
+            '</b>.' +
+
+            '<br><br>' +
+
+            '<b>Índice quadrático:</b> ' +
+            formatar(impacto) +
+            '%';
+
+    }else{
+
+        el.innerHTML =
+
+            '<b>🔴 DESBALANCEAMENTO ACIMA DO LIMITE</b>' +
+
+            '<br><br>' +
+
+            'O desbalanceamento calculado foi de ' +
+
+            '<b>' +
+            formatar(percentual) +
+            '%</b>.' +
+
+            '<br><br>' +
+
+            'O resultado ultrapassou o limite de referência ' +
+            'de <b>2%</b>.' +
+
+            '<br><br>' +
+
+            'Maior desvio encontrado na fase: ' +
+
+            '<b>' +
+            maiorFase +
+            '</b>.' +
+
+            '<br><br>' +
+
+            'Menor tensão medida: ' +
+            '<b>' +
+            menorFase +
+            '</b>.' +
+
+            '<br><br>' +
+
+            '<b>Índice quadrático:</b> ' +
+            formatar(impacto) +
+            '%';
+
+    }
+
+}
+
+
+/* =====================================================
+   RECOMENDAÇÕES
+===================================================== */
+
+function mostrarRecomendacoes(
+    percentual
+){
+
+    const lista =
+        document.getElementById(
+            'recomendacoes'
+        );
+
+    const alerta =
+        document.getElementById(
+            'alertaManutencao'
+        );
+
+
+    if(percentual <= LIMITE){
+
+        lista.innerHTML =
+
+            '<b>Condição dentro do limite de referência.</b>' +
+
+            '<ul>' +
+
+            '<li>Registrar as três tensões medidas.</li>' +
+
+            '<li>Acompanhar as correntes.</li>' +
+
+            '<li>Observar aquecimento anormal.</li>' +
+
+            '<li>Manter histórico das medições.</li>' +
+
+            '</ul>';
+
+
+        alerta.className =
+            'alerta-manutencao alerta-ok';
+
+        alerta.innerHTML =
+            '✓ DESBALANCEAMENTO ≤ 2% — dentro do limite de referência.';
+
+    }else{
+
+        lista.innerHTML =
+
+            '<b>Desbalanceamento acima de 2%.</b>' +
+
+            '<ul>' +
+
+            '<li>Verificar aperto dos bornes.</li>' +
+
+            '<li>Inspecionar cabos e terminais.</li>' +
+
+            '<li>Verificar contatos dos contatores.</li>' +
+
+            '<li>Verificar disjuntores.</li>' +
+
+            '<li>Repetir as três medições.</li>' +
+
+            '<li>Medir as correntes reais com alicate amperímetro.</li>' +
+
+            '<li>Verificar queda de tensão.</li>' +
+
+            '<li>Verificar aquecimento.</li>' +
+
+            '<li>Investigar a origem do desbalanceamento.</li>' +
+
+            '</ul>';
+
+
+        alerta.className =
+            'alerta-manutencao alerta-critico';
+
+        alerta.innerHTML =
+            '⚠ DESBALANCEAMENTO > 2% — investigar a causa.';
+
+    }
+
+}
+
+
+/* =====================================================
+   CÁLCULO PRINCIPAL
+===================================================== */
+
+function calcular(){
+
+    const rs =
+        valor('rs');
+
+    const rt =
+        valor('rt');
+
+    const st =
+        valor('st');
+
+
+    /*
+       VALIDAÇÃO
+    */
+
+    if(
+        !Number.isFinite(rs) ||
+        !Number.isFinite(rt) ||
+        !Number.isFinite(st) ||
+        rs <= 0 ||
+        rt <= 0 ||
+        st <= 0
+    ){
+
+        alert(
+            'Digite as três tensões corretamente.'
+        );
+
+        return;
+
+    }
+
+
+    /*
+       MÉDIA
+
+       EXATAMENTE:
+
+       (R-S + R-T + S-T) / 3
+    */
+
+    const media =
+        (
+            rs +
+            rt +
+            st
+        ) / 3;
+
+
+    /*
+       DIFERENÇA PARA A MÉDIA
+
+       MÉDIA - LEITURA
+    */
+
+    const drs =
+        media - rs;
+
+    const drt =
+        media - rt;
+
+    const dst =
+        media - st;
+
+
+    /*
+       MAIOR DESVIO ABSOLUTO
+    */
+
+    const maior =
+        Math.max(
+            Math.abs(drs),
+            Math.abs(drt),
+            Math.abs(dst)
+        );
+
+
+    /*
+       DESBALANCEAMENTO
+
+       maior diferença / média × 100
+    */
+
+    const percentual =
+        (
+            maior /
+            media
+        ) * 100;
+
+
+    /*
+       ÍNDICE QUADRÁTICO
+    */
+
+    const impacto =
+        2 *
+        Math.pow(
+            percentual,
+            2
+        );
+
+
+    /*
+       IDENTIFICAÇÃO DAS FASES
+    */
+
+    const fases = [
+
+        {
+            nome:'R–S',
+            valor:rs,
+            diferenca:drs
+        },
+
+        {
+            nome:'R–T',
+            valor:rt,
+            diferenca:drt
+        },
+
+        {
+            nome:'S–T',
+            valor:st,
+            diferenca:dst
+        }
+
+    ];
+
+
+    const maiorDesvio =
+        [...fases].sort(
+            (a,b) =>
+                Math.abs(b.diferenca) -
+                Math.abs(a.diferenca)
+        )[0];
+
+
+    const maiorTensao =
+        [...fases].sort(
+            (a,b) =>
+                b.valor -
+                a.valor
+        )[0];
+
+
+    const menorTensao =
+        [...fases].sort(
+            (a,b) =>
+                a.valor -
+                b.valor
+        )[0];
+
+
+    /*
+       MOSTRAR RESULTADOS
+    */
+
+    document.getElementById(
+        'resultCard'
+    ).style.display =
+        'block';
+
+
+    document.getElementById(
+        'vrs'
+    ).textContent =
+        formatar(rs) +
+        ' V';
+
+    document.getElementById(
+        'vrt'
+    ).textContent =
+        formatar(rt) +
+        ' V';
+
+    document.getElementById(
+        'vst'
+    ).textContent =
+        formatar(st) +
+        ' V';
+
+
+    mostrarDiferenca(
+        'drs',
+        drs
+    );
+
+    mostrarDiferenca(
+        'drt',
+        drt
+    );
+
+    mostrarDiferenca(
+        'dst',
+        dst
+    );
+
+
+    document.getElementById(
+        'media'
+    ).textContent =
+        formatar(media);
+
+
+    document.getElementById(
+        'maior'
+    ).textContent =
+        formatar(maior) +
+        ' V';
+
+
+    document.getElementById(
+        'percent'
+    ).textContent =
+        formatar(percentual) +
+        ' %';
+
+
+    document.getElementById(
+        'thermal'
+    ).textContent =
+        formatar(impacto) +
+        ' %';
+
+
+    /*
+       STATUS
+    */
+
+    const status =
+        document.getElementById(
+            'status'
+        );
+
+
+    if(percentual <= LIMITE){
+
+        status.className =
+            'status ok';
+
+        status.innerHTML =
+
+            '✓ DENTRO DO LIMITE DE 2%' +
+
+            '<br>' +
+
+            formatar(percentual) +
+            '% ≤ 2%';
+
+    }else{
+
+        status.className =
+            'status bad';
+
+        status.innerHTML =
+
+            '🔴 DESBALANCEAMENTO ACIMA DE 2%' +
+
+            '<br>' +
+
+            formatar(percentual) +
+            '% > 2%';
+
+    }
+
+
+    /*
+       INFORMAÇÃO DAS FASES
+    */
+
+    document.getElementById(
+        'faseInfo'
+    ).innerHTML =
+
+        '📊 <b>Situação:</b> ' +
+
+        (
+            percentual <= LIMITE
+            ? 'DENTRO DO LIMITE DE 2%'
+            : 'ACIMA DO LIMITE DE 2%'
+        ) +
+
+        '<br><br>' +
+
+        '🔵 <b>R–S:</b> ' +
+        formatar(rs) +
+        ' V — diferença ' +
+        formatarSinal(drs) +
+
+        '<br>' +
+
+        '🔴 <b>R–T:</b> ' +
+        formatar(rt) +
+        ' V — diferença ' +
+        formatarSinal(drt) +
+
+        '<br>' +
+
+        '🟣 <b>S–T:</b> ' +
+        formatar(st) +
+        ' V — diferença ' +
+        formatarSinal(dst) +
+
+        '<br><br>' +
+
+        '↑ <b>Maior tensão:</b> ' +
+        maiorTensao.nome +
+        ' — ' +
+        formatar(maiorTensao.valor) +
+        ' V' +
+
+        '<br>' +
+
+        '↓ <b>Menor tensão:</b> ' +
+        menorTensao.nome +
+        ' — ' +
+        formatar(menorTensao.valor) +
+        ' V' +
+
+        '<br><br>' +
+
+        '📐 <b>Maior desvio:</b> ' +
+        maiorDesvio.nome +
+        ' — ' +
+        formatar(
+            Math.abs(
+                maiorDesvio.diferenca
+            )
+        ) +
+        ' V' +
+
+        '<br>' +
+
+        '📈 <b>Desbalanceamento:</b> ' +
+        formatar(percentual) +
+        '%';
+
+
+    /*
+       GRÁFICOS
+    */
+
+    desenharGraficoTensao(
+        rs,
+        rt,
+        st,
+        media
+    );
+
+    desenharGraficoCorrente(
+        rs,
+        rt,
+        st,
+        media
+    );
+
+
+    /*
+       CICLOS
+    */
+
+    calcularCiclos(
+        rs,
+        rt,
+        st
+    );
+
+
+    /*
+       CORRENTE
+    */
+
+    mostrarCorrente(
+        rs,
+        rt,
+        st,
+        media
+    );
+
+
+    /*
+       INTERPRETAÇÃO
+    */
+
+    mostrarInterpretacao(
+        percentual,
+        impacto,
+        maiorDesvio.nome,
+        menorTensao.nome
+    );
+
+
+    /*
+       RECOMENDAÇÕES
+    */
+
+    mostrarRecomendacoes(
+        percentual
+    );
+
+
+    /*
+       SCROLL
+    */
+
+    setTimeout(
+        function(){
+
+            document.getElementById(
+                'resultCard'
+            ).scrollIntoView({
+                behavior:'smooth',
+                block:'start'
+            });
+
+        },
+        100
+    );
+
+}
+
+
+/* =====================================================
+   LIMPAR
+===================================================== */
+
+function limpar(){
+
+    document.getElementById(
+        'rs'
+    ).value = '';
+
+    document.getElementById(
+        'rt'
+    ).value = '';
+
+    document.getElementById(
+        'st'
+    ).value = '';
+
+
+    document.getElementById(
+        'resultCard'
+    ).style.display =
+        'none';
+
+
+    document.getElementById(
+        'rs'
+    ).focus();
+
+}
+
+
+/* =====================================================
+   REDESENHAR GRÁFICOS AO GIRAR/REDIMENSIONAR A TELA
+===================================================== */
+
+window.addEventListener(
+    'resize',
+    function(){
+
+        const result =
+            document.getElementById(
+                'resultCard'
+            );
+
+        if(
+            result.style.display === 'none'
+        ){
+            return;
+        }
+
+
+        const rs =
+            valor('rs');
+
+        const rt =
+            valor('rt');
+
+        const st =
+            valor('st');
+
+
+        if(
+            !Number.isFinite(rs) ||
+            !Number.isFinite(rt) ||
+            !Number.isFinite(st)
+        ){
+            return;
+        }
+
+
+        const media =
+            (
+                rs +
+                rt +
+                st
+            ) / 3;
+
+
+        desenharGraficoTensao(
+            rs,
+            rt,
+            st,
+            media
+        );
+
+
+        desenharGraficoCorrente(
+            rs,
+            rt,
+            st,
+            media
+        );
+
+    }
+);
+
+
+/* =====================================================
+   ENTER PARA CALCULAR
+===================================================== */
+
+document.addEventListener(
+    'keydown',
+    function(event){
+
+        if(
+            event.key === 'Enter' &&
+            document.activeElement &&
+            document.activeElement.tagName === 'INPUT'
+        ){
+
+            calcular();
+
+        }
+
+    }
+);
+
+</script>
+
+</body>
+</html>
