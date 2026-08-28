@@ -62,10 +62,6 @@ h3{
     line-height:1.6;
 }
 
-/* =========================
-   ENTRADAS
-========================= */
-
 .inputs{
     display:grid;
     grid-template-columns:repeat(3,1fr);
@@ -110,10 +106,6 @@ input:focus{
     font-weight:bold;
 }
 
-/* =========================
-   BOTÕES
-========================= */
-
 button{
     width:100%;
     border:0;
@@ -143,10 +135,6 @@ button:disabled{
 .print-button{
     background:#0b79a3;
 }
-
-/* =========================
-   RESULTADOS
-========================= */
 
 .row{
     display:grid;
@@ -225,10 +213,6 @@ button:disabled{
     font-weight:bold;
 }
 
-/* =========================
-   STATUS
-========================= */
-
 .status{
     margin-top:14px;
     padding:17px;
@@ -259,10 +243,6 @@ button:disabled{
     color:#9b1c1c;
 }
 
-/* =========================
-   DIAGNÓSTICO
-========================= */
-
 .diagnostico{
     margin-top:15px;
     padding:18px;
@@ -290,10 +270,6 @@ button:disabled{
     border:2px solid #a7d6b1;
 }
 
-/* =========================
-   TÉRMICO
-========================= */
-
 .thermal{
     margin-top:14px;
     padding:17px;
@@ -320,10 +296,6 @@ button:disabled{
     line-height:1.6;
 }
 
-/* =========================
-   FALTA DE FASE
-========================= */
-
 .phase-loss{
     margin-top:14px;
     padding:17px;
@@ -344,10 +316,6 @@ button:disabled{
     border:1px solid #b7dfc1;
     line-height:1.6;
 }
-
-/* =========================
-   GRÁFICOS
-========================= */
 
 .wave-card{
     margin-top:12px;
@@ -380,10 +348,6 @@ canvas{
     background:#fff;
 }
 
-/* =========================
-   LEGENDA
-========================= */
-
 .wave-legend{
     display:flex;
     justify-content:center;
@@ -414,10 +378,6 @@ canvas{
     background:#6a3dad;
 }
 
-/* =========================
-   INFORMAÇÕES
-========================= */
-
 .fase-info,
 .current-info,
 .interpretacao,
@@ -442,10 +402,6 @@ canvas{
 .recomendacoes li{
     margin-bottom:7px;
 }
-
-/* =========================
-   CORRENTE
-========================= */
 
 .current-result{
     display:grid;
@@ -479,10 +435,6 @@ canvas{
     font-weight:bold;
 }
 
-/* =========================
-   TABELA DE CORRENTE
-========================= */
-
 .current-table{
     width:100%;
     border-collapse:collapse;
@@ -501,10 +453,6 @@ canvas{
     text-align:center;
     border-bottom:1px solid #e1e6ea;
 }
-
-/* =========================
-   CICLO
-========================= */
 
 .cycle-table{
     width:100%;
@@ -540,10 +488,6 @@ canvas{
     font-weight:bold;
 }
 
-/* =========================
-   FÓRMULA
-========================= */
-
 .formula{
     padding:15px;
     border-radius:11px;
@@ -554,20 +498,12 @@ canvas{
     overflow-x:auto;
 }
 
-/* =========================
-   RODAPÉ
-========================= */
-
 .footer{
     text-align:center;
     color:#74818c;
     font-size:12px;
     padding:12px;
 }
-
-/* =========================
-   RESPONSIVO
-========================= */
 
 @media(max-width:700px){
 
@@ -620,10 +556,6 @@ canvas{
         padding:6px 3px;
     }
 }
-
-/* =========================
-   IMPRESSÃO
-========================= */
 
 @media print{
 
@@ -720,10 +652,6 @@ body.preparando-impressao canvas{
 
 <div class="app">
 
-<!-- =====================================================
-     ENTRADAS
-===================================================== -->
-
 <div class="card">
 
 <h1>⚡ Diagnóstico Elétrico de Compressor</h1>
@@ -766,64 +694,40 @@ A análise separa:
 <div class="inputs-four">
 
 <div>
-
-<label for="nominal">
-Tensão nominal (V)
-</label>
-
-<input
-    id="nominal"
-    type="number"
-    step="0.01"
-    inputmode="decimal"
-    value="380"
-    placeholder="Ex.: 380">
-
+<label for="nominal">Tensão nominal (V)</label>
+<input id="nominal"
+       type="number"
+       step="0.01"
+       inputmode="decimal"
+       value="380"
+       placeholder="Ex.: 380">
 </div>
 
 <div>
-
-<label for="rs">
-R – S (V)
-</label>
-
-<input
-    id="rs"
-    type="number"
-    step="0.01"
-    inputmode="decimal"
-    placeholder="Digite">
-
+<label for="rs">R – S (V)</label>
+<input id="rs"
+       type="number"
+       step="0.01"
+       inputmode="decimal"
+       placeholder="Digite">
 </div>
 
 <div>
-
-<label for="rt">
-R – T (V)
-</label>
-
-<input
-    id="rt"
-    type="number"
-    step="0.01"
-    inputmode="decimal"
-    placeholder="Digite">
-
+<label for="rt">R – T (V)</label>
+<input id="rt"
+       type="number"
+       step="0.01"
+       inputmode="decimal"
+       placeholder="Digite">
 </div>
 
 <div>
-
-<label for="st">
-S – T (V)
-</label>
-
-<input
-    id="st"
-    type="number"
-    step="0.01"
-    inputmode="decimal"
-    placeholder="Digite">
-
+<label for="st">S – T (V)</label>
+<input id="st"
+       type="number"
+       step="0.01"
+       inputmode="decimal"
+       placeholder="Digite">
 </div>
 
 </div>
@@ -835,56 +739,43 @@ S – T (V)
 <div class="inputs">
 
 <div>
-
-<label for="ir">
-Corrente R (A)
-</label>
-
-<input
-    id="ir"
-    type="number"
-    step="0.01"
-    inputmode="decimal"
-    placeholder="Opcional">
-
+<label for="ir">Corrente R (A)</label>
+<input id="ir"
+       type="number"
+       step="0.01"
+       inputmode="decimal"
+       placeholder="Opcional">
 </div>
 
 <div>
-
-<label for="is">
-Corrente S (A)
-</label>
-
-<input
-    id="is"
-    type="number"
-    step="0.01"
-    inputmode="decimal"
-    placeholder="Opcional">
-
+<label for="is">Corrente S (A)</label>
+<input id="is"
+       type="number"
+       step="0.01"
+       inputmode="decimal"
+       placeholder="Opcional">
 </div>
 
 <div>
-
-<label for="it">
-Corrente T (A)
-</label>
-
-<input
-    id="it"
-    type="number"
-    step="0.01"
-    inputmode="decimal"
-    placeholder="Opcional">
-
+<label for="it">Corrente T (A)</label>
+<input id="it"
+       type="number"
+       step="0.01"
+       inputmode="decimal"
+       placeholder="Opcional">
 </div>
 
 </div>
 
 <div class="note" style="margin-top:12px">
 
-As correntes R, S e T devem ser medidas com alicate
-amperímetro. Elas não são calculadas a partir da tensão.
+As correntes R, S e T são valores reais medidos com
+alicate amperímetro. A corrente média é calculada
+automaticamente pela fórmula:
+
+<br><br>
+
+<b>(R + S + T) ÷ 3</b>
 
 </div>
 
@@ -894,109 +785,54 @@ amperímetro. Elas não são calculadas a partir da tensão.
 
 <button class="reset"
         onclick="limpar()">
-
 ↺ LIMPAR
-
 </button>
 
 <button class="print-button"
         onclick="imprimirRelatorio()">
-
 🖨️ IMPRIMIR / SALVAR PDF
-
 </button>
 
 </div>
 
 
-<!-- =====================================================
-     RESULTADOS
-===================================================== -->
-
-<div
-class="card"
-id="resultCard"
-style="display:none">
+<div class="card"
+     id="resultCard"
+     style="display:none">
 
 <h2>
 1. Leituras de tensão e diferença para a média
 </h2>
 
 <div class="row head">
-
-<div>
-Fases
-</div>
-
-<div class="num">
-Leitura
-</div>
-
-<div class="num">
-Diferença da leitura para a média
-</div>
-
+<div>Fases</div>
+<div class="num">Leitura</div>
+<div class="num">Diferença da leitura para a média</div>
 </div>
 
 <div class="row">
-
-<div>
-R – S
-</div>
-
-<div class="num"
-     id="vrs">
-</div>
-
-<div class="num"
-     id="drs">
-</div>
-
+<div>R – S</div>
+<div class="num" id="vrs"></div>
+<div class="num" id="drs"></div>
 </div>
 
 <div class="row">
-
-<div>
-R – T
-</div>
-
-<div class="num"
-     id="vrt">
-</div>
-
-<div class="num"
-     id="drt">
-</div>
-
+<div>R – T</div>
+<div class="num" id="vrt"></div>
+<div class="num" id="drt"></div>
 </div>
 
 <div class="row">
-
-<div>
-S – T
-</div>
-
-<div class="num"
-     id="vst">
-</div>
-
-<div class="num"
-     id="dst">
-</div>
-
+<div>S – T</div>
+<div class="num" id="vst"></div>
+<div class="num" id="dst"></div>
 </div>
 
 <div class="mean">
-
 Tensão média =
 <span id="media"></span> V
-
 </div>
 
-
-<!-- =====================================================
-     TENSÃO NOMINAL
-===================================================== -->
 
 <h2 style="margin-top:25px">
 2. Variação em relação à tensão nominal
@@ -1005,39 +841,18 @@ Tensão média =
 <div class="result-three">
 
 <div class="box">
-
-<small>
-Tensão nominal
-</small>
-
-<div class="value"
-     id="valorNominal">
-</div>
-
+<small>Tensão nominal</small>
+<div class="value" id="valorNominal"></div>
 </div>
 
 <div class="box">
-
-<small>
-Tensão média medida
-</small>
-
-<div class="value"
-     id="valorMediaNominal">
-</div>
-
+<small>Tensão média medida</small>
+<div class="value" id="valorMediaNominal"></div>
 </div>
 
 <div class="box">
-
-<small>
-Variação da nominal
-</small>
-
-<div class="value"
-     id="variacaoNominal">
-</div>
-
+<small>Variação da nominal</small>
+<div class="value" id="variacaoNominal"></div>
 </div>
 
 </div>
@@ -1047,10 +862,6 @@ Variação da nominal
 </div>
 
 
-<!-- =====================================================
-     DESBALANCEAMENTO
-===================================================== -->
-
 <h2 style="margin-top:25px">
 3. Desbalanceamento de tensão
 </h2>
@@ -1058,27 +869,13 @@ Variação da nominal
 <div class="result">
 
 <div class="box">
-
-<small>
-Maior desvio absoluto
-</small>
-
-<div class="value"
-     id="maior">
-</div>
-
+<small>Maior desvio absoluto</small>
+<div class="value" id="maior"></div>
 </div>
 
 <div class="box">
-
-<small>
-Desbalanceamento
-</small>
-
-<div class="value"
-     id="percent">
-</div>
-
+<small>Desbalanceamento</small>
+<div class="value" id="percent"></div>
 </div>
 
 </div>
@@ -1091,32 +888,18 @@ Desbalanceamento
      class="fase-info">
 </div>
 
-
-<!-- =====================================================
-     FALTA DE FASE
-===================================================== -->
-
 <div id="faseLoss">
 </div>
 
 
-<!-- =====================================================
-     ÍNDICE TÉRMICO
-===================================================== -->
-
 <h2 style="margin-top:25px">
-
-4. Estimativa percentual de aumento da elevação
-da temperatura
-
+4. Estimativa percentual de aumento da elevação da temperatura
 </h2>
 
 <div class="thermal">
 
 <div class="thermal-title">
-
 2 × (% de desbalanceamento)²
-
 </div>
 
 <div class="thermal-value"
@@ -1127,37 +910,25 @@ da temperatura
 
 Este é um índice matemático baseado na relação
 quadrática utilizada para representar o efeito do
-desequilíbrio sobre a elevação de temperatura dos
-enrolamentos.
+desequilíbrio sobre a elevação de temperatura.
 
 <br><br>
 
 <b>Não representa diretamente a temperatura real em °C.</b>
 
-Para temperatura real, deve-se utilizar medição térmica
-ou os sensores/proteções do equipamento.
-
 </div>
 
 </div>
 
-
-<!-- =====================================================
-     GRÁFICO
-===================================================== -->
 
 <h2 style="margin-top:25px">
-
 5. Gráfico senoidal das tensões
-
 </h2>
 
 <div class="wave-card">
 
 <div class="canvas-wrap">
-
 <canvas id="graficoSenoidal"></canvas>
-
 </div>
 
 <div class="print-only"
@@ -1186,15 +957,8 @@ S–T
 </div>
 
 
-<!-- =====================================================
-     CICLO DIDÁTICO
-===================================================== -->
-
 <h2 style="margin-top:25px">
-
-6. Variação instantânea das ondas —
-representação didática
-
+6. Variação instantânea das ondas — representação didática
 </h2>
 
 <div class="wave-card">
@@ -1206,17 +970,12 @@ senoides com defasagem de 120°.
 
 <br><br>
 
-<b>
-IMPORTANTE:
-</b>
+<b>IMPORTANTE:</b>
 
 <br>
 
-Esta análise é apenas didática.
-
-Ela <b>não substitui</b> o cálculo do desbalanceamento
-RMS das tensões e não deve ser utilizada isoladamente
-para diagnosticar desequilíbrio de tensão.
+Esta análise é apenas didática e não substitui
+o cálculo do desbalanceamento RMS das tensões.
 
 </div>
 
@@ -1227,31 +986,12 @@ para diagnosticar desequilíbrio de tensão.
 <thead>
 
 <tr>
-
-<th>
-Ponto
-</th>
-
-<th>
-Ângulo
-</th>
-
-<th>
-R–S
-</th>
-
-<th>
-R–T
-</th>
-
-<th>
-S–T
-</th>
-
-<th>
-Variação relativa
-</th>
-
+<th>Ponto</th>
+<th>Ângulo</th>
+<th>R–S</th>
+<th>R–T</th>
+<th>S–T</th>
+<th>Variação relativa</th>
 </tr>
 
 </thead>
@@ -1266,93 +1006,56 @@ Variação relativa
 </div>
 
 
-<!-- =====================================================
-     CORRENTE
-===================================================== -->
-
 <h2 style="margin-top:25px">
-
 7. Desbalanceamento de corrente
-
 </h2>
 
 <div class="wave-card">
 
 <div class="note">
 
-O cálculo abaixo utiliza as <b>correntes reais medidas</b>
-nas três fases.
+O cálculo utiliza exclusivamente as <b>correntes reais
+medidas</b> nas três fases.
 
 <br><br>
 
-Fórmula:
-
-<br>
-
 <b>
-Desbalanceamento de corrente =
-maior desvio da média ÷ corrente média × 100
+Corrente média = (R + S + T) ÷ 3
 </b>
 
 <br><br>
 
-O limite de corrente deve ser comparado com os dados
-do fabricante, proteção e condições de operação
-do compressor.
+<b>
+Desbalanceamento =
+maior desvio da média ÷ corrente média × 100
+</b>
 
 </div>
 
 <div class="current-result">
 
 <div class="current-box">
-
-<small>
-R
-</small>
-
+<small>R</small>
 <div class="current-value"
-     id="corrR">
--
-</div>
-
+     id="corrR">-</div>
 <div class="current-percent"
-     id="corrRPerc">
-</div>
-
+     id="corrRPerc"></div>
 </div>
 
 <div class="current-box">
-
-<small>
-S
-</small>
-
+<small>S</small>
 <div class="current-value"
-     id="corrS">
--
-</div>
-
+     id="corrS">-</div>
 <div class="current-percent"
-     id="corrSPerc">
-</div>
-
+     id="corrSPerc"></div>
 </div>
 
 <div class="current-box">
-
-<small>
-T
-</small>
-
+<small>T</small>
 <div class="current-value"
-     id="corrT">
--
-</div>
-
+     id="corrT">-</div>
 <div class="current-percent"
-     id="corrTPerc">
-</div>
-
+     id="corrTPerc"></div>
 </div>
 
 </div>
@@ -1361,42 +1064,21 @@ T
      style="margin-top:14px">
 
 <div class="box">
-
-<small>
-Corrente média
-</small>
-
+<small>Corrente média</small>
 <div class="value"
-     id="corrMedia">
--
-</div>
-
+     id="corrMedia">-</div>
 </div>
 
 <div class="box">
-
-<small>
-Maior desvio
-</small>
-
+<small>Maior desvio</small>
 <div class="value"
-     id="corrMaiorDesvio">
--
-</div>
-
+     id="corrMaiorDesvio">-</div>
 </div>
 
 <div class="box">
-
-<small>
-Desbalanceamento
-</small>
-
+<small>Desbalanceamento</small>
 <div class="value"
-     id="corrPercent">
--
-</div>
-
+     id="corrPercent">-</div>
 </div>
 
 </div>
@@ -1412,15 +1094,8 @@ Desbalanceamento
 </div>
 
 
-<!-- =====================================================
-     CORRENTE RELATIVA
-===================================================== -->
-
 <h2 style="margin-top:25px">
-
-8. Estimativa didática da influência da tensão
-sobre a corrente
-
+8. Estimativa didática da influência da tensão sobre a corrente
 </h2>
 
 <div class="wave-card">
@@ -1431,26 +1106,15 @@ Esta estimativa demonstra uma relação inversa simplificada:
 
 <br><br>
 
-<b>
-menor tensão → maior corrente relativa
-</b>
+<b>menor tensão → maior corrente relativa</b>
 
 <br>
 
-<b>
-maior tensão → menor corrente relativa
-</b>
+<b>maior tensão → menor corrente relativa</b>
 
 <br><br>
 
-<b>
-Não representa a corrente real do compressor.
-</b>
-
-<br><br>
-
-Para diagnóstico elétrico, utilize as correntes reais
-medidas com alicate amperímetro.
+<b>Não representa a corrente real do compressor.</b>
 
 </div>
 
@@ -1467,14 +1131,8 @@ medidas com alicate amperímetro.
 </div>
 
 
-<!-- =====================================================
-     DIAGNÓSTICO
-===================================================== -->
-
 <h2 style="margin-top:25px">
-
 9. Diagnóstico elétrico do compressor
-
 </h2>
 
 <div id="diagnostico"
@@ -1482,14 +1140,8 @@ medidas com alicate amperímetro.
 </div>
 
 
-<!-- =====================================================
-     INTERPRETAÇÃO
-===================================================== -->
-
 <h2 style="margin-top:25px">
-
 10. Interpretação automática
-
 </h2>
 
 <div id="interpretacao"
@@ -1497,14 +1149,8 @@ medidas com alicate amperímetro.
 </div>
 
 
-<!-- =====================================================
-     RECOMENDAÇÕES
-===================================================== -->
-
 <h2 style="margin-top:25px">
-
 11. Recomendações de inspeção
-
 </h2>
 
 <div id="recomendacoes"
@@ -1512,14 +1158,8 @@ medidas com alicate amperímetro.
 </div>
 
 
-<!-- =====================================================
-     FÓRMULAS
-===================================================== -->
-
 <h2 style="margin-top:25px">
-
 12. Fórmulas utilizadas
-
 </h2>
 
 <div class="formula">
@@ -1558,6 +1198,12 @@ VARIAÇÃO DA TENSÃO NOMINAL
 
 <br><br>
 
+CORRENTE MÉDIA REAL
+
+(R + S + T) ÷ 3
+
+<br><br>
+
 DESBALANCEAMENTO DE CORRENTE
 
 (Maior desvio de corrente ÷ Corrente média) × 100
@@ -1582,16 +1228,16 @@ LIMITE DE REFERÊNCIA DE TENSÃO
 
 </div>
 
-
-<div class="note" style="margin-top:15px">
+<div class="note"
+     style="margin-top:15px">
 
 <b>Importante:</b>
 
 O limite de 2% é o limite de referência adotado
-nesta calculadora para a análise de desbalanceamento
-de tensão. Os limites efetivos de operação devem ser
-conferidos nas especificações do fabricante,
-normas aplicáveis e sistema de proteção do equipamento.
+nesta calculadora para análise de desbalanceamento
+de tensão. Os limites efetivos devem ser conferidos
+nas especificações do fabricante, normas aplicáveis
+e sistema de proteção do equipamento.
 
 </div>
 
@@ -1614,10 +1260,6 @@ Tensão • Desbalanceamento • Corrente • Aquecimento
 
 <script>
 
-/* =====================================================
-   CONFIGURAÇÕES
-===================================================== */
-
 const LIMITE_TENSAO = 2;
 
 
@@ -1627,14 +1269,32 @@ const LIMITE_TENSAO = 2;
 
 function valor(id){
 
-    return parseFloat(
-        document.getElementById(id).value
-    );
+    const campo =
+        document.getElementById(id);
+
+    if(!campo){
+        return NaN;
+    }
+
+    const texto =
+        String(campo.value)
+        .replace(',', '.')
+        .trim();
+
+    if(texto === ''){
+        return NaN;
+    }
+
+    return parseFloat(texto);
 
 }
 
 
 function formatar(numero){
+
+    if(!Number.isFinite(numero)){
+        return '-';
+    }
 
     return Number(numero)
         .toFixed(2)
@@ -1646,19 +1306,11 @@ function formatar(numero){
 function formatarSinal(numero){
 
     if(numero > 0){
-
-        return '+' +
-            formatar(numero) +
-            ' V';
-
+        return '+' + formatar(numero) + ' V';
     }
 
     if(numero < 0){
-
-        return '−' +
-            formatar(Math.abs(numero)) +
-            ' V';
-
+        return '−' + formatar(Math.abs(numero)) + ' V';
     }
 
     return '0,00 V';
@@ -1669,15 +1321,11 @@ function formatarSinal(numero){
 function classeDiferenca(numero){
 
     if(numero > 0){
-
         return 'positive';
-
     }
 
     if(numero < 0){
-
         return 'negative';
-
     }
 
     return 'neutral';
@@ -1701,7 +1349,7 @@ function mostrarDiferenca(id,numero){
 
 
 /* =====================================================
-   CLASSIFICAÇÃO DO DESBALANCEAMENTO
+   CLASSIFICAÇÃO
 ===================================================== */
 
 function classificarDesbalanceamento(percentual){
@@ -1782,7 +1430,7 @@ function prepararCanvas(canvas){
     );
 
     return {
-        ctx:ctx,
+        ctx,
         W:largura,
         H:altura
     };
@@ -1794,45 +1442,22 @@ function prepararCanvas(canvas){
    GRÁFICO DE TENSÃO
 ===================================================== */
 
-function desenharGraficoTensao(
-    rs,
-    rt,
-    st
-){
+function desenharGraficoTensao(rs,rt,st){
 
     const canvas =
-        document.getElementById(
-            'graficoSenoidal'
-        );
+        document.getElementById('graficoSenoidal');
 
     const dados =
         prepararCanvas(canvas);
 
-    const ctx =
-        dados.ctx;
+    const ctx = dados.ctx;
+    const W = dados.W;
+    const H = dados.H;
 
-    const W =
-        dados.W;
+    ctx.clearRect(0,0,W,H);
 
-    const H =
-        dados.H;
-
-    ctx.clearRect(
-        0,
-        0,
-        W,
-        H
-    );
-
-    ctx.fillStyle =
-        '#ffffff';
-
-    ctx.fillRect(
-        0,
-        0,
-        W,
-        H
-    );
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0,0,W,H);
 
     const margemEsquerda = 52;
     const margemDireita = 18;
@@ -1840,18 +1465,13 @@ function desenharGraficoTensao(
     const margemInferior = 35;
 
     const grafW =
-        W -
-        margemEsquerda -
-        margemDireita;
+        W - margemEsquerda - margemDireita;
 
     const grafH =
-        H -
-        margemSuperior -
-        margemInferior;
+        H - margemSuperior - margemInferior;
 
     const centroY =
-        margemSuperior +
-        grafH / 2;
+        margemSuperior + grafH / 2;
 
     const maiorTensao =
         Math.max(
@@ -1864,10 +1484,8 @@ function desenharGraficoTensao(
         grafH * 0.40;
 
     const escalaVertical =
-        amplitudeMax /
-        maiorTensao;
+        amplitudeMax / maiorTensao;
 
-    /* GRADE */
 
     ctx.lineWidth = 1;
     ctx.strokeStyle = '#e4e9ed';
@@ -1879,17 +1497,8 @@ function desenharGraficoTensao(
             (grafH / 8) * i;
 
         ctx.beginPath();
-
-        ctx.moveTo(
-            margemEsquerda,
-            y
-        );
-
-        ctx.lineTo(
-            W - margemDireita,
-            y
-        );
-
+        ctx.moveTo(margemEsquerda,y);
+        ctx.lineTo(W-margemDireita,y);
         ctx.stroke();
 
     }
@@ -1901,57 +1510,29 @@ function desenharGraficoTensao(
             (grafW / 8) * i;
 
         ctx.beginPath();
-
-        ctx.moveTo(
-            x,
-            margemSuperior
-        );
-
-        ctx.lineTo(
-            x,
-            H - margemInferior
-        );
-
+        ctx.moveTo(x,margemSuperior);
+        ctx.lineTo(x,H-margemInferior);
         ctx.stroke();
 
     }
 
-    /* EIXO */
 
-    ctx.strokeStyle =
-        '#69757e';
-
+    ctx.strokeStyle = '#69757e';
     ctx.lineWidth = 1.5;
 
     ctx.beginPath();
-
-    ctx.moveTo(
-        margemEsquerda,
-        centroY
-    );
-
-    ctx.lineTo(
-        W - margemDireita,
-        centroY
-    );
-
+    ctx.moveTo(margemEsquerda,centroY);
+    ctx.lineTo(W-margemDireita,centroY);
     ctx.stroke();
 
-    /* SENOIDE */
 
-    function desenharSenoide(
-        tensao,
-        fase,
-        cor
-    ){
+    function desenharSenoide(tensao,fase,cor){
 
         const amplitude =
             Math.abs(tensao) *
             escalaVertical;
 
-        ctx.strokeStyle =
-            cor;
-
+        ctx.strokeStyle = cor;
         ctx.lineWidth = 3;
 
         ctx.beginPath();
@@ -1962,10 +1543,10 @@ function desenharGraficoTensao(
 
             const x =
                 margemEsquerda +
-                (grafW / pontos) * i;
+                (grafW/pontos)*i;
 
             const angulo =
-                (i / pontos) *
+                (i/pontos) *
                 Math.PI * 4 +
                 fase;
 
@@ -1974,20 +1555,10 @@ function desenharGraficoTensao(
                 Math.sin(angulo) *
                 amplitude;
 
-            if(i === 0){
-
-                ctx.moveTo(
-                    x,
-                    y
-                );
-
+            if(i===0){
+                ctx.moveTo(x,y);
             }else{
-
-                ctx.lineTo(
-                    x,
-                    y
-                );
-
+                ctx.lineTo(x,y);
             }
 
         }
@@ -1995,6 +1566,7 @@ function desenharGraficoTensao(
         ctx.stroke();
 
     }
+
 
     desenharSenoide(
         rs,
@@ -2004,107 +1576,56 @@ function desenharGraficoTensao(
 
     desenharSenoide(
         rt,
-        -2 * Math.PI / 3,
+        -2*Math.PI/3,
         '#a51e1e'
     );
 
     desenharSenoide(
         st,
-        2 * Math.PI / 3,
+        2*Math.PI/3,
         '#6a3dad'
     );
 
-    /* TÍTULOS */
 
-    ctx.textAlign =
-        'center';
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.font = 'bold 15px Arial';
 
-    ctx.textBaseline =
-        'middle';
-
-    ctx.font =
-        'bold 15px Arial';
-
-    ctx.fillStyle =
-        '#087f8c';
+    ctx.fillStyle = '#087f8c';
 
     ctx.fillText(
-        'R–S ' + formatar(rs) + ' V',
-        W * 0.20,
+        'R–S '+formatar(rs)+' V',
+        W*0.20,
         23
     );
 
-    ctx.fillStyle =
-        '#a51e1e';
+    ctx.fillStyle = '#a51e1e';
 
     ctx.fillText(
-        'R–T ' + formatar(rt) + ' V',
-        W * 0.50,
+        'R–T '+formatar(rt)+' V',
+        W*0.50,
         23
     );
 
-    ctx.fillStyle =
-        '#6a3dad';
+    ctx.fillStyle = '#6a3dad';
 
     ctx.fillText(
-        'S–T ' + formatar(st) + ' V',
-        W * 0.80,
+        'S–T '+formatar(st)+' V',
+        W*0.80,
         23
-    );
-
-    ctx.fillStyle =
-        '#5d6974';
-
-    ctx.font =
-        '12px Arial';
-
-    ctx.textAlign =
-        'left';
-
-    ctx.fillText(
-        '+V',
-        8,
-        margemSuperior + 5
-    );
-
-    ctx.fillText(
-        '0',
-        15,
-        centroY
-    );
-
-    ctx.fillText(
-        '−V',
-        8,
-        H - margemInferior
-    );
-
-    ctx.textAlign =
-        'right';
-
-    ctx.fillText(
-        'Representação senoidal • defasagem de 120°',
-        W - 10,
-        H - 10
     );
 
 }
 
 
 /* =====================================================
-   CICLO DIDÁTICO
+   CICLO
 ===================================================== */
 
-function calcularCiclos(
-    rs,
-    rt,
-    st
-){
+function calcularCiclos(rs,rt,st){
 
     const tbody =
-        document.getElementById(
-            'cycleBody'
-        );
+        document.getElementById('cycleBody');
 
     tbody.innerHTML = '';
 
@@ -2112,30 +1633,22 @@ function calcularCiclos(
 
     for(let i=0;i<pontos;i++){
 
-        const angulo =
-            i * 30;
+        const angulo = i*30;
 
         const rad =
-            angulo *
-            Math.PI /
-            180;
+            angulo*Math.PI/180;
 
         const v1 =
-            rs *
-            Math.sin(rad);
+            rs*Math.sin(rad);
 
         const v2 =
-            rt *
-            Math.sin(
-                rad -
-                2 * Math.PI / 3
+            rt*Math.sin(
+                rad-2*Math.PI/3
             );
 
         const v3 =
-            st *
-            Math.sin(
-                rad +
-                2 * Math.PI / 3
+            st*Math.sin(
+                rad+2*Math.PI/3
             );
 
         const valores = [
@@ -2152,61 +1665,32 @@ function calcularCiclos(
 
         let variacao = 0;
 
-        if(maior + menor > 0){
+        if(maior+menor>0){
 
             variacao =
                 (
-                    (maior - menor) /
-                    ((maior + menor) / 2)
-                ) * 100;
+                    (maior-menor) /
+                    ((maior+menor)/2)
+                )*100;
 
         }
 
         const tr =
             document.createElement('tr');
 
-        /*
-           Aqui NÃO chamamos isso de
-           desbalanceamento real.
-        */
-
         const classe =
-            variacao <= 2
+            variacao<=2
             ? 'cycle-good'
             : 'cycle-bad';
 
         tr.innerHTML =
-
-            '<td>' +
-            (i + 1) +
-            '</td>' +
-
-            '<td>' +
-            angulo +
-            '°' +
-            '</td>' +
-
-            '<td>' +
-            formatar(v1) +
-            ' V' +
-            '</td>' +
-
-            '<td>' +
-            formatar(v2) +
-            ' V' +
-            '</td>' +
-
-            '<td>' +
-            formatar(v3) +
-            ' V' +
-            '</td>' +
-
-            '<td class="' +
-            classe +
-            '">' +
-            formatar(variacao) +
-            '%*' +
-            '</td>';
+            '<td>'+(i+1)+'</td>'+
+            '<td>'+angulo+'°</td>'+
+            '<td>'+formatar(v1)+' V</td>'+
+            '<td>'+formatar(v2)+' V</td>'+
+            '<td>'+formatar(v3)+' V</td>'+
+            '<td class="'+classe+'">'+
+            formatar(variacao)+'%*</td>';
 
         tbody.appendChild(tr);
 
@@ -2219,52 +1703,28 @@ function calcularCiclos(
    GRÁFICO DE CORRENTE RELATIVA
 ===================================================== */
 
-function desenharGraficoCorrente(
-    rs,
-    rt,
-    st,
-    media
-){
+function desenharGraficoCorrente(rs,rt,st,media){
 
     const canvas =
-        document.getElementById(
-            'graficoCorrente'
-        );
+        document.getElementById('graficoCorrente');
 
     const dados =
         prepararCanvas(canvas);
 
-    const ctx =
-        dados.ctx;
+    const ctx = dados.ctx;
+    const W = dados.W;
+    const H = dados.H;
 
-    const W =
-        dados.W;
+    ctx.clearRect(0,0,W,H);
 
-    const H =
-        dados.H;
-
-    ctx.clearRect(
-        0,
-        0,
-        W,
-        H
-    );
-
-    ctx.fillStyle =
-        '#ffffff';
-
-    ctx.fillRect(
-        0,
-        0,
-        W,
-        H
-    );
+    ctx.fillStyle = '#ffffff';
+    ctx.fillRect(0,0,W,H);
 
     const valores = [
 
-        media / rs * 100,
-        media / rt * 100,
-        media / st * 100
+        media/rs*100,
+        media/rt*100,
+        media/st*100
 
     ];
 
@@ -2272,79 +1732,51 @@ function desenharGraficoCorrente(
         Math.max(...valores);
 
     const maxEscala =
-        Math.max(
-            110,
-            maior * 1.18
-        );
+        Math.max(110,maior*1.18);
 
     const topo = 55;
-    const base = H - 55;
+    const base = H-55;
 
     const altura =
-        base - topo;
+        base-topo;
 
-    ctx.strokeStyle =
-        '#e2e7eb';
-
+    ctx.strokeStyle = '#e2e7eb';
     ctx.lineWidth = 1;
 
     for(let i=0;i<=5;i++){
 
         const valorGrade =
-            maxEscala / 5 * i;
+            maxEscala/5*i;
 
         const y =
             base -
-            (
-                valorGrade /
-                maxEscala
-            ) *
-            altura;
+            (valorGrade/maxEscala)*altura;
 
         ctx.beginPath();
-
-        ctx.moveTo(
-            45,
-            y
-        );
-
-        ctx.lineTo(
-            W - 20,
-            y
-        );
-
+        ctx.moveTo(45,y);
+        ctx.lineTo(W-20,y);
         ctx.stroke();
 
-        ctx.fillStyle =
-            '#65717d';
-
-        ctx.font =
-            '11px Arial';
-
-        ctx.textAlign =
-            'left';
+        ctx.fillStyle = '#65717d';
+        ctx.font = '11px Arial';
+        ctx.textAlign = 'left';
 
         ctx.fillText(
-            formatar(valorGrade) +
-            '%',
+            formatar(valorGrade)+'%',
             5,
-            y - 3
+            y-3
         );
 
     }
 
+
     const largura =
-        Math.min(
-            100,
-            W * 0.18
-        );
+        Math.min(100,W*0.18);
 
     const xs = [
-
-        W * 0.22 - largura / 2,
-        W * 0.50 - largura / 2,
-        W * 0.78 - largura / 2
-
+        W*0.22-largura/2,
+        W*0.50-largura/2,
+        W*0.78-largura/2
     ];
 
     const nomes = [
@@ -2359,21 +1791,17 @@ function desenharGraficoCorrente(
         '#6a3dad'
     ];
 
+
     for(let i=0;i<3;i++){
 
         const valorCorrente =
             valores[i];
 
         const alturaBarra =
-            (
-                valorCorrente /
-                maxEscala
-            ) *
-            altura;
+            valorCorrente/maxEscala*altura;
 
         const y =
-            base -
-            alturaBarra;
+            base-alturaBarra;
 
         ctx.fillStyle =
             cores[i];
@@ -2385,97 +1813,63 @@ function desenharGraficoCorrente(
             alturaBarra
         );
 
-        ctx.fillStyle =
-            '#17212b';
-
-        ctx.font =
-            'bold 14px Arial';
-
-        ctx.textAlign =
-            'center';
+        ctx.fillStyle = '#17212b';
+        ctx.font = 'bold 14px Arial';
+        ctx.textAlign = 'center';
 
         ctx.fillText(
-            formatar(valorCorrente) +
-            '%',
-            xs[i] +
-            largura / 2,
-            Math.max(
-                43,
-                y - 9
-            )
+            formatar(valorCorrente)+'%',
+            xs[i]+largura/2,
+            Math.max(43,y-9)
         );
 
-        ctx.font =
-            'bold 13px Arial';
+        ctx.font = 'bold 13px Arial';
 
         ctx.fillText(
             nomes[i],
-            xs[i] +
-            largura / 2,
-            base + 22
+            xs[i]+largura/2,
+            base+22
         );
 
     }
 
+
     const y100 =
         base -
-        (
-            100 /
-            maxEscala
-        ) *
-        altura;
+        (100/maxEscala)*altura;
 
-    ctx.strokeStyle =
-        '#333';
+    ctx.strokeStyle = '#333';
 
-    ctx.setLineDash([
-        6,
-        5
-    ]);
+    ctx.setLineDash([6,5]);
 
     ctx.beginPath();
 
-    ctx.moveTo(
-        45,
-        y100
-    );
-
-    ctx.lineTo(
-        W - 20,
-        y100
-    );
+    ctx.moveTo(45,y100);
+    ctx.lineTo(W-20,y100);
 
     ctx.stroke();
 
     ctx.setLineDash([]);
 
-    ctx.fillStyle =
-        '#333';
-
-    ctx.font =
-        'bold 11px Arial';
-
-    ctx.textAlign =
-        'right';
+    ctx.fillStyle = '#333';
+    ctx.font = 'bold 11px Arial';
+    ctx.textAlign = 'right';
 
     ctx.fillText(
         '100% = tensão média',
-        W - 20,
-        y100 - 7
+        W-20,
+        y100-7
     );
 
-    ctx.textAlign =
-        'center';
+    ctx.textAlign = 'center';
 
-    ctx.font =
-        'bold 15px Arial';
+    ctx.font = 'bold 15px Arial';
 
-    ctx.fillStyle =
-        '#17212b';
+    ctx.fillStyle = '#17212b';
 
     ctx.fillText(
         'ESTIMATIVA DIDÁTICA DA INFLUÊNCIA DA TENSÃO',
-        W / 2,
+        W/2,
         22
     );
 
@@ -2483,85 +1877,117 @@ function desenharGraficoCorrente(
 
 
 /* =====================================================
-   CORRENTE REAL
+   ★ CORRENTE REAL — CORRIGIDA
 ===================================================== */
 
-function calcularCorrente(
-    ir,
-    is,
-    it
-){
+function calcularCorrente(ir,is,it){
 
-    const todosValidos =
+    const elR =
+        document.getElementById('corrR');
+
+    const elS =
+        document.getElementById('corrS');
+
+    const elT =
+        document.getElementById('corrT');
+
+    const elRPerc =
+        document.getElementById('corrRPerc');
+
+    const elSPerc =
+        document.getElementById('corrSPerc');
+
+    const elTPerc =
+        document.getElementById('corrTPerc');
+
+    const elMedia =
+        document.getElementById('corrMedia');
+
+    const elMaior =
+        document.getElementById('corrMaiorDesvio');
+
+    const elPercent =
+        document.getElementById('corrPercent');
+
+    const status =
+        document.getElementById('corrStatus');
+
+    const info =
+        document.getElementById('correnteInfo');
+
+
+    /* ================================================
+       VERIFICAÇÃO
+    ================================================= */
+
+    const validas =
         Number.isFinite(ir) &&
         Number.isFinite(is) &&
         Number.isFinite(it) &&
-        ir > 0 &&
-        is > 0 &&
-        it > 0;
+        ir >= 0 &&
+        is >= 0 &&
+        it >= 0;
 
-    if(!todosValidos){
 
-        document.getElementById(
-            'corrR'
-        ).textContent = '-';
+    if(!validas){
 
-        document.getElementById(
-            'corrS'
-        ).textContent = '-';
+        elR.textContent = '-';
+        elS.textContent = '-';
+        elT.textContent = '-';
 
-        document.getElementById(
-            'corrT'
-        ).textContent = '-';
+        elRPerc.textContent = '';
+        elSPerc.textContent = '';
+        elTPerc.textContent = '';
 
-        document.getElementById(
-            'corrMedia'
-        ).textContent = '-';
+        elMedia.textContent = '-';
+        elMaior.textContent = '-';
+        elPercent.textContent = '-';
 
-        document.getElementById(
-            'corrMaiorDesvio'
-        ).textContent = '-';
-
-        document.getElementById(
-            'corrPercent'
-        ).textContent = '-';
-
-        document.getElementById(
-            'corrStatus'
-        ).className =
+        status.className =
             'status attention';
 
-        document.getElementById(
-            'corrStatus'
-        ).innerHTML =
-            'ℹ️ CORRENTE NÃO INFORMADA — ' +
-            'insira R, S e T para calcular o desbalanceamento real de corrente.';
+        status.innerHTML =
+            'ℹ️ CORRENTE REAL NÃO INFORMADA' +
+            '<br><br>' +
+            'Informe R, S e T para calcular a corrente média real.';
 
-        document.getElementById(
-            'correnteInfo'
-        ).innerHTML =
-            '<b>Importante:</b> a corrente real não deve ser estimada somente pela tensão. ' +
-            'Meça R, S e T com alicate amperímetro.';
+        info.innerHTML =
+            '<b>Fórmula:</b><br><br>' +
+            '(R + S + T) ÷ 3' +
+            '<br><br>' +
+            'A corrente média é calculada somente a partir ' +
+            'das três correntes medidas.';
 
         return null;
 
     }
 
+
+    /* ================================================
+       CORRENTE MÉDIA REAL
+    ================================================= */
+
     const media =
-        (
-            ir +
-            is +
-            it
-        ) / 3;
+        (ir + is + it) / 3;
+
+
+    /* ================================================
+       DESVIOS
+    ================================================= */
 
     const dr =
-        media - ir;
+        ir - media;
 
     const ds =
-        media - is;
+        is - media;
 
     const dt =
-        media - it;
+        it - media;
+
+
+    /* ================================================
+       MAIOR DESVIO
+    ================================================= */
 
     const maior =
         Math.max(
@@ -2570,91 +1996,113 @@ function calcularCorrente(
             Math.abs(dt)
         );
 
-    const percentual =
-        (
-            maior /
-            media
-        ) * 100;
 
-    document.getElementById(
-        'corrR'
-    ).textContent =
-        formatar(ir) +
-        ' A';
+    /* ================================================
+       DESBALANCEAMENTO
+    ================================================= */
 
-    document.getElementById(
-        'corrS'
-    ).textContent =
-        formatar(is) +
-        ' A';
+    let percentual = 0;
 
-    document.getElementById(
-        'corrT'
-    ).textContent =
-        formatar(it) +
-        ' A';
+    if(media > 0){
 
-    document.getElementById(
-        'corrRPerc'
-    ).textContent =
-        (
-            dr >= 0 ? '+' : ''
-        ) +
-        formatar(
-            (dr / media) * 100
-        ) +
+        percentual =
+            (maior / media) * 100;
+
+    }
+
+
+    /* ================================================
+       MOSTRAR R S T
+    ================================================= */
+
+    elR.textContent =
+        formatar(ir) + ' A';
+
+    elS.textContent =
+        formatar(is) + ' A';
+
+    elT.textContent =
+        formatar(it) + ' A';
+
+
+    /* ================================================
+       DESVIO DE CADA FASE
+    ================================================= */
+
+    elRPerc.textContent =
+        (dr >= 0 ? '+' : '') +
+        formatar((dr / media) * 100) +
         '% da média';
 
-    document.getElementById(
-        'corrSPerc'
-    ).textContent =
-        (
-            ds >= 0 ? '+' : ''
-        ) +
-        formatar(
-            (ds / media) * 100
-        ) +
+    elSPerc.textContent =
+        (ds >= 0 ? '+' : '') +
+        formatar((ds / media) * 100) +
         '% da média';
 
-    document.getElementById(
-        'corrTPerc'
-    ).textContent =
-        (
-            dt >= 0 ? '+' : ''
-        ) +
-        formatar(
-            (dt / media) * 100
-        ) +
+    elTPerc.textContent =
+        (dt >= 0 ? '+' : '') +
+        formatar((dt / media) * 100) +
         '% da média';
 
-    document.getElementById(
-        'corrMedia'
-    ).textContent =
-        formatar(media) +
-        ' A';
 
-    document.getElementById(
-        'corrMaiorDesvio'
-    ).textContent =
-        formatar(maior) +
-        ' A';
+    /* ================================================
+       RESULTADOS
+    ================================================= */
 
-    document.getElementById(
-        'corrPercent'
-    ).textContent =
-        formatar(percentual) +
-        '%';
+    elMedia.textContent =
+        formatar(media) + ' A';
 
-    const status =
-        document.getElementById(
-            'corrStatus'
+    elMaior.textContent =
+        formatar(maior) + ' A';
+
+    elPercent.textContent =
+        formatar(percentual) + '%';
+
+
+    /* ================================================
+       FASE COM MAIOR DESVIO
+    ================================================= */
+
+    const fases = [
+
+        {
+            nome:'R',
+            valor:ir,
+            desvio:dr
+        },
+
+        {
+            nome:'S',
+            valor:is,
+            desvio:ds
+        },
+
+        {
+            nome:'T',
+            valor:it,
+            desvio:dt
+        }
+
+    ];
+
+
+    const faseMaiorDesvio =
+        fases.reduce(
+            function(atual,fase){
+
+                return
+                    Math.abs(fase.desvio) >
+                    Math.abs(atual.desvio)
+                    ? fase
+                    : atual;
+
+            }
         );
 
-    /*
-       Não tratamos 5% como limite universal.
-       O valor deve ser comparado com fabricante,
-       proteção e aplicação.
-    */
+
+    /* ================================================
+       STATUS
+    ================================================= */
 
     if(percentual <= 2){
 
@@ -2662,23 +2110,27 @@ function calcularCorrente(
             'status ok';
 
         status.innerHTML =
-            '🟢 BAIXO DESBALANCEAMENTO DE CORRENTE' +
+            '🟢 CORRENTE BEM BALANCEADA' +
             '<br>' +
             formatar(percentual) +
             '%';
 
-    }else if(percentual <= 5){
+    }
+
+    else if(percentual <= 5){
 
         status.className =
             'status attention';
 
         status.innerHTML =
-            '🟡 DESBALANCEAMENTO DE CORRENTE REQUER ATENÇÃO' +
+            '🟡 ATENÇÃO — DESBALANCEAMENTO DE CORRENTE' +
             '<br>' +
             formatar(percentual) +
             '%';
 
-    }else{
+    }
+
+    else{
 
         status.className =
             'status bad';
@@ -2691,47 +2143,38 @@ function calcularCorrente(
 
     }
 
-    const correntes = [
-        {
-            nome:'R',
-            valor:ir,
-            desvio:dr
-        },
-        {
-            nome:'S',
-            valor:is,
-            desvio:ds
-        },
-        {
-            nome:'T',
-            valor:it,
-            desvio:dt
-        }
-    ];
 
-    const maiorDesvio =
-        [...correntes].sort(
-            (a,b) =>
-                Math.abs(b.desvio) -
-                Math.abs(a.desvio)
-        )[0];
+    /* ================================================
+       INFORMAÇÕES
+    ================================================= */
 
-    document.getElementById(
-        'correnteInfo'
-    ).innerHTML =
+    info.innerHTML =
 
-        '⚡ <b>Corrente média:</b> ' +
+        '⚡ <b>Corrente média real:</b> ' +
         formatar(media) +
         ' A' +
 
         '<br><br>' +
 
+        '🧮 <b>Cálculo:</b> (' +
+        formatar(ir) +
+        ' + ' +
+        formatar(is) +
+        ' + ' +
+        formatar(it) +
+        ') ÷ 3 = ' +
+        '<b>' +
+        formatar(media) +
+        ' A</b>' +
+
+        '<br><br>' +
+
         '📐 <b>Maior desvio:</b> ' +
-        maiorDesvio.nome +
+        faseMaiorDesvio.nome +
         ' — ' +
         formatar(
             Math.abs(
-                maiorDesvio.desvio
+                faseMaiorDesvio.desvio
             )
         ) +
         ' A' +
@@ -2744,14 +2187,58 @@ function calcularCorrente(
 
         '<br><br>' +
 
-        'O resultado deve ser comparado com a corrente nominal, ' +
-        'corrente de placa, condições de carga e especificações ' +
-        'do fabricante do compressor.';
+        'R = ' +
+        formatar(ir) +
+        ' A (' +
+        (dr >= 0 ? '+' : '') +
+        formatar((dr / media) * 100) +
+        '%)' +
+
+        '<br>' +
+
+        'S = ' +
+        formatar(is) +
+        ' A (' +
+        (ds >= 0 ? '+' : '') +
+        formatar((ds / media) * 100) +
+        '%)' +
+
+        '<br>' +
+
+        'T = ' +
+        formatar(it) +
+        ' A (' +
+        (dt >= 0 ? '+' : '') +
+        formatar((dt / media) * 100) +
+        '%)' +
+
+        '<br><br>' +
+
+        '<b>Importante:</b> comparar a corrente média e ' +
+        'as correntes individuais com a corrente nominal ' +
+        'da placa e as condições reais de operação.';
+
 
     return {
-        media,
-        percentual,
-        maior
+
+        media:media,
+
+        percentual:percentual,
+
+        maior:maior,
+
+        ir:ir,
+
+        is:is,
+
+        it:it,
+
+        dr:dr,
+
+        ds:ds,
+
+        dt:dt
+
     };
 
 }
@@ -2761,41 +2248,31 @@ function calcularCorrente(
    FALTA DE FASE
 ===================================================== */
 
-function verificarFaltaDeFase(
-    rs,
-    rt,
-    st,
-    nominal
-){
+function verificarFaltaDeFase(rs,rt,st,nominal){
 
     const valores = [
+
         {
             nome:'R–S',
             valor:rs
         },
+
         {
             nome:'R–T',
             valor:rt
         },
+
         {
             nome:'S–T',
             valor:st
         }
+
     ];
-
-    /*
-       Uma tensão entre fases muito próxima de zero
-       pode indicar falta de fase, condutor aberto,
-       fusível/disjuntor aberto ou outro problema
-       no circuito.
-
-       A calculadora não identifica sozinha a causa.
-    */
 
     const limite =
         Math.max(
             50,
-            nominal * 0.10
+            nominal*0.10
         );
 
     const suspeitas =
@@ -2805,11 +2282,10 @@ function verificarFaltaDeFase(
         );
 
     const el =
-        document.getElementById(
-            'faseLoss'
-        );
+        document.getElementById('faseLoss');
 
-    if(suspeitas.length > 0){
+
+    if(suspeitas.length>0){
 
         el.className =
             'phase-loss';
@@ -2820,47 +2296,30 @@ function verificarFaltaDeFase(
 
             '<br><br>' +
 
-            'A medição ' +
-
-            suspeitas
-                .map(
-                    x =>
-                        '<b>' +
-                        x.nome +
-                        ' = ' +
-                        formatar(x.valor) +
-                        ' V</b>'
-                )
-                .join(' • ') +
-
-            ' está muito abaixo da tensão nominal informada.' +
+            suspeitas.map(
+                x =>
+                    '<b>'+
+                    x.nome+
+                    ' = '+
+                    formatar(x.valor)+
+                    ' V</b>'
+            ).join(' • ') +
 
             '<br><br>' +
 
-            'Verificar imediatamente cabos, bornes, fusíveis, ' +
-            'disjuntores, contatores, conexões e alimentação.' +
-
-            '<br><br>' +
-
-            '<b>Não interpretar esta condição apenas como um ' +
-            'desbalanceamento percentual comum.</b>';
+            'Verificar cabos, bornes, fusíveis, disjuntores, ' +
+            'contatores e conexões.';
 
         return true;
 
     }
 
+
     el.className =
         'phase-ok';
 
     el.innerHTML =
-
-        '🟢 Não foi detectada condição de tensão entre fases ' +
-        'próxima de zero nas medições informadas.' +
-
-        '<br><br>' +
-
-        'Isso não elimina outros problemas elétricos. ' +
-        'As correntes e conexões ainda devem ser verificadas.';
+        '🟢 Não foi detectada tensão entre fases próxima de zero.';
 
     return false;
 
@@ -2881,9 +2340,7 @@ function gerarDiagnostico(
 ){
 
     const el =
-        document.getElementById(
-            'diagnostico'
-        );
+        document.getElementById('diagnostico');
 
     let html = '';
 
@@ -2895,127 +2352,86 @@ function gerarDiagnostico(
         html +=
             '<b>🔴 PRIORIDADE MÁXIMA</b>' +
             '<br><br>' +
-
-            'Foi detectada uma possível condição de falta de fase ' +
-            'ou interrupção grave em uma medição entre fases.' +
-
-            '<br><br>' +
-
-            '<b>Sequência de investigação:</b>' +
-
-            '<br>1. Verificar alimentação.' +
-            '<br>2. Verificar disjuntor/fusíveis.' +
-            '<br>3. Verificar contatores.' +
-            '<br>4. Verificar bornes e conexões.' +
-            '<br>5. Medir novamente tensão entre fases.' +
-            '<br>6. Medir corrente nas três fases.';
-
-        return;
+            'Foi detectada uma possível condição de falta ' +
+            'de fase ou interrupção grave.';
 
     }
 
-    const tensaoRuim =
-        percentualTensao > LIMITE_TENSAO;
+    else{
 
-    const correnteRuim =
-        correnteDados &&
-        correnteDados.percentual > 5;
+        const tensaoRuim =
+            percentualTensao > LIMITE_TENSAO;
 
-    const correnteAtencao =
-        correnteDados &&
-        correnteDados.percentual > 2;
+        const correnteRuim =
+            correnteDados &&
+            correnteDados.percentual > 5;
 
-    if(
-        tensaoRuim &&
-        correnteRuim
-    ){
+        const correnteAtencao =
+            correnteDados &&
+            correnteDados.percentual > 2;
 
-        el.className =
-            'diagnostico diagnostico-critical';
 
-        html +=
-            '<b>🔴 CONDIÇÃO ELÉTRICA CRÍTICA</b>' +
-            '<br><br>' +
+        if(tensaoRuim && correnteRuim){
 
-            'Há desbalanceamento de tensão acima de 2% ' +
-            'e desbalanceamento de corrente elevado.' +
+            el.className =
+                'diagnostico diagnostico-critical';
 
-            '<br><br>' +
+            html +=
+                '<b>🔴 CONDIÇÃO ELÉTRICA CRÍTICA</b>' +
+                '<br><br>' +
+                'Há desbalanceamento de tensão acima de 2% ' +
+                'e desbalanceamento de corrente elevado.' +
+                '<br><br>' +
+                'Desbalanceamento de tensão → correntes ' +
+                'desequilibradas → aumento do aquecimento ' +
+                '→ possível deterioração do isolamento.';
 
-            '<b>Relação provável:</b>' +
+        }
 
-            '<br>' +
+        else if(tensaoRuim || correnteRuim){
 
-            'Desbalanceamento de tensão → ' +
-            'correntes desequilibradas → ' +
-            'aumento do aquecimento dos enrolamentos → ' +
-            'possível deterioração do isolamento → ' +
-            'risco de dano ao compressor.';
+            el.className =
+                'diagnostico diagnostico-warning';
 
-    }else if(
-        tensaoRuim ||
-        correnteRuim
-    ){
+            html +=
+                '<b>🟠 CONDIÇÃO QUE REQUER INVESTIGAÇÃO</b>' +
+                '<br><br>' +
+                'Foi encontrada uma condição elétrica que ' +
+                'pode contribuir para aquecimento do compressor.';
 
-        el.className =
-            'diagnostico diagnostico-warning';
+        }
 
-        html +=
-            '<b>🟠 CONDIÇÃO QUE REQUER INVESTIGAÇÃO</b>' +
-            '<br><br>' +
+        else if(correnteAtencao){
 
-            'Foi encontrada uma condição elétrica que pode ' +
-            'contribuir para aquecimento do compressor.' +
+            el.className =
+                'diagnostico diagnostico-warning';
 
-            '<br><br>' +
+            html +=
+                '<b>🟡 ATENÇÃO À CORRENTE</b>' +
+                '<br><br>' +
+                'A tensão está dentro da referência, porém ' +
+                'a corrente apresenta desequilíbrio.';
 
-            'Verificar tensão, corrente, conexões, dispositivos ' +
-            'de partida e condições de carga.';
+        }
 
-    }else if(
-        correnteAtencao
-    ){
+        else{
 
-        el.className =
-            'diagnostico diagnostico-warning';
+            el.className =
+                'diagnostico diagnostico-ok';
 
-        html +=
-            '<b>🟡 ATENÇÃO À CORRENTE</b>' +
-            '<br><br>' +
+            html +=
+                '<b>🟢 CONDIÇÃO ELÉTRICA FAVORÁVEL</b>' +
+                '<br><br>' +
+                'Não foi identificado desbalanceamento de tensão ' +
+                'acima do limite de referência.';
 
-            'A tensão está dentro do limite de referência, ' +
-            'porém a corrente apresenta desequilíbrio que ' +
-            'merece acompanhamento.' +
-
-            '<br><br>' +
-
-            'Investigar carga, conexões, alimentação e ' +
-            'condições do compressor.';
-
-    }else{
-
-        el.className =
-            'diagnostico diagnostico-ok';
-
-        html +=
-            '<b>🟢 CONDIÇÃO ELÉTRICA FAVORÁVEL</b>' +
-            '<br><br>' +
-
-            'Não foi identificado desbalanceamento de tensão ' +
-            'acima do limite de referência nas medições informadas.' +
-
-            '<br><br>' +
-
-            'Isso não significa que o compressor esteja ' +
-            'necessariamente sem defeito. Deve-se considerar ' +
-            'também carga, temperatura, pressão, lubrificação, ' +
-            'isolamento, partida e condições mecânicas.';
+        }
 
     }
+
 
     html +=
         '<br><br>' +
-
         '📈 <b>Maior tensão:</b> ' +
         maiorTensao.nome +
         ' — ' +
@@ -3036,17 +2452,24 @@ function gerarDiagnostico(
         formatar(variacaoNominal) +
         '%';
 
+
     if(correnteDados){
 
         html +=
             '<br>' +
+            '⚡ <b>Corrente média real:</b> ' +
+            formatar(correnteDados.media) +
+            ' A' +
+
+            '<br>' +
+
             '⚡ <b>Desbalanceamento de corrente:</b> ' +
-            formatar(
-                correnteDados.percentual
-            ) +
+            formatar(correnteDados.percentual) +
             '%';
 
-    }else{
+    }
+
+    else{
 
         html +=
             '<br>' +
@@ -3054,8 +2477,8 @@ function gerarDiagnostico(
 
     }
 
-    el.innerHTML =
-        html;
+
+    el.innerHTML = html;
 
 }
 
@@ -3073,19 +2496,15 @@ function mostrarInterpretacao(
 ){
 
     const el =
-        document.getElementById(
-            'interpretacao'
-        );
+        document.getElementById('interpretacao');
 
     const classificacao =
-        classificarDesbalanceamento(
-            percentual
-        );
+        classificarDesbalanceamento(percentual);
 
     el.innerHTML =
 
-        '<b>' +
-        classificacao.titulo +
+        '<b>'+
+        classificacao.titulo+
         '</b>' +
 
         '<br><br>' +
@@ -3119,8 +2538,8 @@ function mostrarInterpretacao(
         '<br><br>' +
 
         'A tensão mais baixa foi identificada em ' +
-        '<b>' +
-        menorTensao.nome +
+        '<b>'+
+        menorTensao.nome+
         '</b>.';
 
 }
@@ -3137,13 +2556,10 @@ function mostrarRecomendacoes(
 ){
 
     const lista =
-        document.getElementById(
-            'recomendacoes'
-        );
+        document.getElementById('recomendacoes');
 
-    let html = '';
-
-    html += '<b>Sequência recomendada de inspeção:</b>';
+    let html =
+        '<b>Sequência recomendada de inspeção:</b>';
 
     html += '<ul>';
 
@@ -3151,16 +2567,16 @@ function mostrarRecomendacoes(
         '<li>Medir R–S, R–T e S–T no equipamento.</li>';
 
     html +=
-        '<li>Comparar a tensão média com a tensão nominal do compressor.</li>';
+        '<li>Comparar a tensão média com a tensão nominal.</li>';
 
     html +=
         '<li>Calcular o desbalanceamento entre fases.</li>';
 
     html +=
-        '<li>Medir as correntes R, S e T com alicate amperímetro.</li>';
+        '<li>Medir R, S e T com alicate amperímetro.</li>';
 
     html +=
-        '<li>Comparar a corrente medida com a corrente nominal da placa.</li>';
+        '<li>Comparar as correntes com a corrente nominal da placa.</li>';
 
     html +=
         '<li>Verificar bornes, cabos e conexões.</li>';
@@ -3169,70 +2585,62 @@ function mostrarRecomendacoes(
         '<li>Verificar disjuntores, fusíveis e contatores.</li>';
 
     html +=
-        '<li>Verificar dispositivo de partida.</li>';
+        '<li>Verificar aquecimento dos terminais.</li>';
 
     html +=
-        '<li>Verificar aquecimento dos terminais e enrolamentos.</li>';
-
-    html +=
-        '<li>Investigar queda de tensão durante a partida e operação.</li>';
-
-    html +=
-        '<li>Verificar as proteções térmica e elétrica.</li>';
+        '<li>Investigar queda de tensão durante partida e operação.</li>';
 
     html += '</ul>';
+
 
     if(faltaFase){
 
         html +=
-            '<br><b>🔴 Atenção:</b> a condição de possível ' +
-            'falta de fase deve ser investigada antes de ' +
-            'continuar a operação do compressor.';
+            '<br><b>🔴 Atenção:</b> investigar a possível ' +
+            'falta de fase antes de continuar a operação.';
 
     }
 
-    if(
-        percentual > LIMITE_TENSAO
-    ){
+
+    if(percentual > LIMITE_TENSAO){
 
         html +=
             '<br><b>🔴 Desbalanceamento acima de 2%:</b> ' +
-            'investigar a origem antes de considerar o compressor ' +
-            'em condição elétrica normal.';
+            'investigar a origem.';
 
     }
+
 
     if(correnteDados){
 
-        if(
-            correnteDados.percentual > 5
-        ){
+        if(correnteDados.percentual > 5){
 
             html +=
                 '<br><br><b>🔴 Corrente:</b> ' +
-                'o desbalanceamento de corrente está elevado ' +
-                'e deve ser investigado.';
-
-        }else if(
-            correnteDados.percentual > 2
-        ){
-
-            html +=
-                '<br><br><b>🟡 Corrente:</b> ' +
-                'há desequilíbrio de corrente que merece acompanhamento.';
+                'desbalanceamento elevado.';
 
         }
 
-    }else{
+        else if(correnteDados.percentual > 2){
 
-        html +=
-            '<br><br><b>ℹ️ Corrente não informada:</b> ' +
-            'para um diagnóstico mais completo, medir R, S e T.';
+            html +=
+                '<br><br><b>🟡 Corrente:</b> ' +
+                'há desequilíbrio que merece acompanhamento.';
+
+        }
 
     }
 
-    lista.innerHTML =
-        html;
+    else{
+
+        html +=
+            '<br><br><b>ℹ️ Corrente não informada:</b> ' +
+            'medir R, S e T para completar o diagnóstico.';
+
+    }
+
+
+    lista.innerHTML = html;
 
 }
 
@@ -3243,26 +2651,15 @@ function mostrarRecomendacoes(
 
 function calcular(){
 
-    const nominal =
-        valor('nominal');
+    const nominal = valor('nominal');
 
-    const rs =
-        valor('rs');
+    const rs = valor('rs');
+    const rt = valor('rt');
+    const st = valor('st');
 
-    const rt =
-        valor('rt');
-
-    const st =
-        valor('st');
-
-    const ir =
-        valor('ir');
-
-    const is =
-        valor('is');
-
-    const it =
-        valor('it');
+    const ir = valor('ir');
+    const is = valor('is');
+    const it = valor('it');
 
 
     if(
@@ -3290,29 +2687,19 @@ function calcular(){
     }
 
 
-    /* MÉDIA */
-
     const media =
-        (
-            rs +
-            rt +
-            st
-        ) / 3;
+        (rs+rt+st)/3;
 
-
-    /* DIFERENÇAS */
 
     const drs =
-        media - rs;
+        media-rs;
 
     const drt =
-        media - rt;
+        media-rt;
 
     const dst =
-        media - st;
+        media-st;
 
-
-    /* MAIOR DESVIO */
 
     const maior =
         Math.max(
@@ -3322,38 +2709,17 @@ function calcular(){
         );
 
 
-    /* DESBALANCEAMENTO */
-
     const percentual =
-        (
-            maior /
-            media
-        ) * 100;
+        (maior/media)*100;
 
-
-    /* VARIAÇÃO DA NOMINAL */
 
     const variacaoNominal =
-        (
-            (
-                media -
-                nominal
-            ) /
-            nominal
-        ) * 100;
+        ((media-nominal)/nominal)*100;
 
-
-    /* ÍNDICE TÉRMICO */
 
     const impacto =
-        2 *
-        Math.pow(
-            percentual,
-            2
-        );
+        2*Math.pow(percentual,2);
 
-
-    /* FASES */
 
     const fases = [
 
@@ -3380,41 +2746,25 @@ function calcular(){
 
     const maiorDesvio =
         [...fases].sort(
-
             (a,b) =>
-
-                Math.abs(
-                    b.diferenca
-                ) -
-
-                Math.abs(
-                    a.diferenca
-                )
-
+                Math.abs(b.diferenca) -
+                Math.abs(a.diferenca)
         )[0];
 
 
     const maiorTensao =
         [...fases].sort(
-
             (a,b) =>
-                b.valor -
-                a.valor
-
+                b.valor-a.valor
         )[0];
 
 
     const menorTensao =
         [...fases].sort(
-
             (a,b) =>
-                a.valor -
-                b.valor
-
+                a.valor-b.valor
         )[0];
 
-
-    /* MOSTRAR RESULTADOS */
 
     document.getElementById(
         'resultCard'
@@ -3422,255 +2772,129 @@ function calcular(){
         'block';
 
 
-    document.getElementById(
-        'vrs'
-    ).textContent =
-        formatar(rs) +
-        ' V';
+    document.getElementById('vrs').textContent =
+        formatar(rs)+' V';
+
+    document.getElementById('vrt').textContent =
+        formatar(rt)+' V';
+
+    document.getElementById('vst').textContent =
+        formatar(st)+' V';
 
 
-    document.getElementById(
-        'vrt'
-    ).textContent =
-        formatar(rt) +
-        ' V';
+    mostrarDiferenca('drs',drs);
+    mostrarDiferenca('drt',drt);
+    mostrarDiferenca('dst',dst);
 
 
-    document.getElementById(
-        'vst'
-    ).textContent =
-        formatar(st) +
-        ' V';
-
-
-    mostrarDiferenca(
-        'drs',
-        drs
-    );
-
-    mostrarDiferenca(
-        'drt',
-        drt
-    );
-
-    mostrarDiferenca(
-        'dst',
-        dst
-    );
-
-
-    document.getElementById(
-        'media'
-    ).textContent =
+    document.getElementById('media').textContent =
         formatar(media);
 
 
-    document.getElementById(
-        'valorNominal'
-    ).textContent =
-        formatar(nominal) +
-        ' V';
+    document.getElementById('valorNominal').textContent =
+        formatar(nominal)+' V';
 
 
-    document.getElementById(
-        'valorMediaNominal'
-    ).textContent =
-        formatar(media) +
-        ' V';
+    document.getElementById('valorMediaNominal').textContent =
+        formatar(media)+' V';
 
 
-    const variacaoEl =
-        document.getElementById(
-            'variacaoNominal'
-        );
-
-    variacaoEl.textContent =
-        (
-            variacaoNominal >= 0
-            ? '+'
-            : ''
-        ) +
-        formatar(variacaoNominal) +
-        '%';
+    document.getElementById('variacaoNominal').textContent =
+        (variacaoNominal>=0?'+':'')+
+        formatar(variacaoNominal)+'%';
 
 
-    document.getElementById(
-        'maior'
-    ).textContent =
-        formatar(maior) +
-        ' V';
+    document.getElementById('maior').textContent =
+        formatar(maior)+' V';
 
 
-    document.getElementById(
-        'percent'
-    ).textContent =
-        formatar(percentual) +
-        ' %';
+    document.getElementById('percent').textContent =
+        formatar(percentual)+' %';
 
 
-    document.getElementById(
-        'thermal'
-    ).textContent =
-        formatar(impacto) +
-        ' %';
+    document.getElementById('thermal').textContent =
+        formatar(impacto)+' %';
 
-
-    /* =================================================
-       STATUS DA NOMINAL
-    ================================================= */
 
     const statusNominal =
-        document.getElementById(
-            'statusNominal'
-        );
+        document.getElementById('statusNominal');
 
-    /*
-       Aqui usamos a tolerância de ±10%
-       somente como referência de avaliação.
-    */
 
-    const dentroNominal =
-        Math.abs(
-            variacaoNominal
-        ) <= 10;
-
-    if(dentroNominal){
+    if(Math.abs(variacaoNominal)<=10){
 
         statusNominal.className =
             'status ok';
 
         statusNominal.innerHTML =
-
-            '🟢 TENSÃO MÉDIA DENTRO DA FAIXA DE ±10% DA NOMINAL' +
-
+            '🟢 TENSÃO MÉDIA DENTRO DA FAIXA DE ±10%' +
             '<br>' +
+            formatar(variacaoNominal)+
+            '% em relação à nominal.';
 
-            formatar(
-                variacaoNominal
-            ) +
-            '% em relação à tensão nominal.';
+    }
 
-    }else{
+    else{
 
         statusNominal.className =
             'status bad';
 
         statusNominal.innerHTML =
-
-            '🔴 TENSÃO MÉDIA FORA DA FAIXA DE ±10% DA NOMINAL' +
-
+            '🔴 TENSÃO MÉDIA FORA DA FAIXA DE ±10%' +
             '<br>' +
-
-            formatar(
-                variacaoNominal
-            ) +
-            '% em relação à tensão nominal.' +
-
-            '<br><br>' +
-
-            'Investigar a alimentação elétrica e a tensão aplicada ao compressor.';
+            formatar(variacaoNominal)+
+            '% em relação à nominal.';
 
     }
 
 
-    /* =================================================
-       STATUS DESBALANCEAMENTO
-    ================================================= */
-
     const status =
-        document.getElementById(
-            'status'
-        );
+        document.getElementById('status');
 
     const classificacao =
-        classificarDesbalanceamento(
-            percentual
-        );
+        classificarDesbalanceamento(percentual);
 
     status.className =
-        'status ' +
-        classificacao.classe;
+        'status '+classificacao.classe;
 
     status.innerHTML =
-
-        classificacao.titulo +
-
-        '<br>' +
-
-        formatar(percentual) +
-
+        classificacao.titulo+
+        '<br>'+
+        formatar(percentual)+
         '% — limite de referência: 2%';
 
 
-    /* =================================================
-       FASE INFO
-    ================================================= */
+    document.getElementById('faseInfo').innerHTML =
 
-    document.getElementById(
-        'faseInfo'
-    ).innerHTML =
-
-        '📊 <b>R–S:</b> ' +
-        formatar(rs) +
-        ' V — diferença ' +
-        formatarSinal(drs) +
+        '📊 <b>R–S:</b> '+
+        formatar(rs)+' V — diferença '+
+        formatarSinal(drs)+
 
         '<br>' +
 
-        '📊 <b>R–T:</b> ' +
-        formatar(rt) +
-        ' V — diferença ' +
-        formatarSinal(drt) +
+        '📊 <b>R–T:</b> '+
+        formatar(rt)+' V — diferença '+
+        formatarSinal(drt)+
 
         '<br>' +
 
-        '📊 <b>S–T:</b> ' +
-        formatar(st) +
-        ' V — diferença ' +
-        formatarSinal(dst) +
+        '📊 <b>S–T:</b> '+
+        formatar(st)+' V — diferença '+
+        formatarSinal(dst)+
 
         '<br><br>' +
 
-        '↑ <b>Maior tensão:</b> ' +
-        maiorTensao.nome +
-        ' — ' +
-        formatar(
-            maiorTensao.valor
-        ) +
-        ' V' +
+        '↑ <b>Maior tensão:</b> '+
+        maiorTensao.nome+
+        ' — '+
+        formatar(maiorTensao.valor)+' V'+
 
         '<br>' +
 
-        '↓ <b>Menor tensão:</b> ' +
-        menorTensao.nome +
-        ' — ' +
-        formatar(
-            menorTensao.valor
-        ) +
-        ' V' +
+        '↓ <b>Menor tensão:</b> '+
+        menorTensao.nome+
+        ' — '+
+        formatar(menorTensao.valor)+' V';
 
-        '<br><br>' +
-
-        '📐 <b>Maior desvio absoluto:</b> ' +
-        maiorDesvio.nome +
-        ' — ' +
-        formatar(
-            Math.abs(
-                maiorDesvio.diferenca
-            )
-        ) +
-        ' V' +
-
-        '<br>' +
-
-        '📈 <b>Desbalanceamento:</b> ' +
-        formatar(percentual) +
-        '%';
-
-
-    /* =================================================
-       FALTA DE FASE
-    ================================================= */
 
     const faltaFase =
         verificarFaltaDeFase(
@@ -3681,8 +2905,8 @@ function calcular(){
         );
 
 
-    /* =================================================
-       CORRENTE
+    /* ================================================
+       ★ AQUI A CORRENTE REAL É CALCULADA
     ================================================= */
 
     const correnteDados =
@@ -3692,10 +2916,6 @@ function calcular(){
             it
         );
 
-
-    /* =================================================
-       GRÁFICOS
-    ================================================= */
 
     desenharGraficoTensao(
         rs,
@@ -3712,20 +2932,12 @@ function calcular(){
     );
 
 
-    /* =================================================
-       CICLO
-    ================================================= */
-
     calcularCiclos(
         rs,
         rt,
         st
     );
 
-
-    /* =================================================
-       DIAGNÓSTICO
-    ================================================= */
 
     gerarDiagnostico(
         percentual,
@@ -3737,24 +2949,14 @@ function calcular(){
     );
 
 
-    /* =================================================
-       INTERPRETAÇÃO
-    ================================================= */
-
     mostrarInterpretacao(
         percentual,
         variacaoNominal,
         impacto,
-        Math.abs(
-            maiorDesvio.diferenca
-        ),
+        Math.abs(maiorDesvio.diferenca),
         menorTensao
     );
 
-
-    /* =================================================
-       RECOMENDAÇÕES
-    ================================================= */
 
     mostrarRecomendacoes(
         percentual,
@@ -3763,19 +2965,14 @@ function calcular(){
     );
 
 
-    /* SCROLL */
-
     setTimeout(
         function(){
 
             document.getElementById(
                 'resultCard'
             ).scrollIntoView({
-
                 behavior:'smooth',
-
                 block:'start'
-
             });
 
         },
@@ -3801,85 +2998,49 @@ function limpar(){
     ].forEach(
         function(id){
 
-            document.getElementById(
-                id
-            ).value = '';
+            document.getElementById(id).value='';
 
         }
     );
 
 
-    document.getElementById(
-        'nominal'
-    ).value =
-        '380';
+    document.getElementById('nominal').value='380';
 
+    document.getElementById('resultCard').style.display='none';
 
-    document.getElementById(
-        'resultCard'
-    ).style.display =
-        'none';
+    document.getElementById('printTensaoContainer').innerHTML='';
 
+    document.getElementById('printCorrenteContainer').innerHTML='';
 
-    document.getElementById(
-        'printTensaoContainer'
-    ).innerHTML =
-        '';
-
-    document.getElementById(
-        'printCorrenteContainer'
-    ).innerHTML =
-        '';
-
-    document.getElementById(
-        'rs'
-    ).focus();
+    document.getElementById('rs').focus();
 
 }
 
 
 /* =====================================================
-   PREPARAR IMPRESSÃO
+   IMPRESSÃO
 ===================================================== */
 
 async function prepararGraficosParaImpressao(){
 
-    const rs =
-        valor('rs');
-
-    const rt =
-        valor('rt');
-
-    const st =
-        valor('st');
+    const rs = valor('rs');
+    const rt = valor('rt');
+    const st = valor('st');
 
     if(
-
         !Number.isFinite(rs) ||
         !Number.isFinite(rt) ||
         !Number.isFinite(st)
-
     ){
-
         return false;
-
     }
 
 
     const media =
-        (
-            rs +
-            rt +
-            st
-        ) / 3;
+        (rs+rt+st)/3;
 
 
-    desenharGraficoTensao(
-        rs,
-        rt,
-        st
-    );
-
+    desenharGraficoTensao(rs,rt,st);
 
     desenharGraficoCorrente(
         rs,
@@ -3890,64 +3051,40 @@ async function prepararGraficosParaImpressao(){
 
 
     const canvasTensao =
-        document.getElementById(
-            'graficoSenoidal'
-        );
+        document.getElementById('graficoSenoidal');
 
     const canvasCorrente =
-        document.getElementById(
-            'graficoCorrente'
-        );
+        document.getElementById('graficoCorrente');
 
 
-    if(
-
-        !canvasTensao ||
-        !canvasCorrente
-
-    ){
-
+    if(!canvasTensao || !canvasCorrente){
         return false;
-
     }
 
 
     const imagemTensao =
-        document.createElement(
-            'img'
-        );
+        document.createElement('img');
 
     const imagemCorrente =
-        document.createElement(
-            'img'
-        );
+        document.createElement('img');
 
 
-    imagemTensao.className =
-        'print-only';
+    imagemTensao.className='print-only';
 
-    imagemCorrente.className =
-        'print-only';
-
+    imagemCorrente.className='print-only';
 
     imagemTensao.alt =
         'Gráfico das tensões entre fases';
-
 
     imagemCorrente.alt =
         'Estimativa didática da influência da tensão sobre a corrente';
 
 
     imagemTensao.src =
-        canvasTensao.toDataURL(
-            'image/png'
-        );
-
+        canvasTensao.toDataURL('image/png');
 
     imagemCorrente.src =
-        canvasCorrente.toDataURL(
-            'image/png'
-        );
+        canvasCorrente.toDataURL('image/png');
 
 
     const containerTensao =
@@ -3961,11 +3098,8 @@ async function prepararGraficosParaImpressao(){
         );
 
 
-    containerTensao.innerHTML =
-        '';
-
-    containerCorrente.innerHTML =
-        '';
+    containerTensao.innerHTML='';
+    containerCorrente.innerHTML='';
 
 
     containerTensao.appendChild(
@@ -3978,15 +3112,8 @@ async function prepararGraficosParaImpressao(){
 
 
     await Promise.all([
-
-        esperarImagem(
-            imagemTensao
-        ),
-
-        esperarImagem(
-            imagemCorrente
-        )
-
+        esperarImagem(imagemTensao),
+        esperarImagem(imagemCorrente)
     ]);
 
 
@@ -3994,10 +3121,6 @@ async function prepararGraficosParaImpressao(){
 
 }
 
-
-/* =====================================================
-   ESPERAR IMAGEM
-===================================================== */
 
 function esperarImagem(img){
 
@@ -4012,29 +3135,19 @@ function esperarImagem(img){
 
             }
 
-            img.onload =
-                function(){
+            img.onload=function(){
+                resolve();
+            };
 
-                    resolve();
-
-                };
-
-            img.onerror =
-                function(){
-
-                    resolve();
-
-                };
+            img.onerror=function(){
+                resolve();
+            };
 
         }
     );
 
 }
 
-
-/* =====================================================
-   IMPRIMIR
-===================================================== */
 
 async function imprimirRelatorio(){
 
@@ -4044,10 +3157,7 @@ async function imprimirRelatorio(){
         );
 
 
-    if(
-        result.style.display ===
-        'none'
-    ){
+    if(result.style.display==='none'){
 
         alert(
             'Primeiro faça o diagnóstico.'
@@ -4066,8 +3176,7 @@ async function imprimirRelatorio(){
 
     if(botao){
 
-        botao.disabled =
-            true;
+        botao.disabled=true;
 
         botao.textContent =
             '⏳ PREPARANDO RELATÓRIO...';
@@ -4107,12 +3216,15 @@ async function imprimirRelatorio(){
                                 resolve();
 
                             }
+
                         );
 
                     }
+
                 );
 
             }
+
         );
 
 
@@ -4130,11 +3242,11 @@ async function imprimirRelatorio(){
 
         window.print();
 
-    }catch(error){
+    }
 
-        console.error(
-            error
-        );
+    catch(error){
+
+        console.error(error);
 
         alert(
             'Não foi possível preparar o relatório.'
@@ -4147,10 +3259,6 @@ async function imprimirRelatorio(){
 }
 
 
-/* =====================================================
-   FINALIZAR IMPRESSÃO
-===================================================== */
-
 function finalizarImpressao(){
 
     document.body.classList.remove(
@@ -4160,13 +3268,12 @@ function finalizarImpressao(){
 
     document.getElementById(
         'printTensaoContainer'
-    ).innerHTML =
-        '';
+    ).innerHTML='';
+
 
     document.getElementById(
         'printCorrenteContainer'
-    ).innerHTML =
-        '';
+    ).innerHTML='';
 
 
     const botao =
@@ -4177,8 +3284,7 @@ function finalizarImpressao(){
 
     if(botao){
 
-        botao.disabled =
-            false;
+        botao.disabled=false;
 
         botao.textContent =
             '🖨️ IMPRIMIR / SALVAR PDF';
@@ -4208,45 +3314,27 @@ window.addEventListener(
             );
 
 
-        if(
-            result.style.display ===
-            'none'
-        ){
-
+        if(result.style.display==='none'){
             return;
-
         }
 
 
-        const rs =
-            valor('rs');
-
-        const rt =
-            valor('rt');
-
-        const st =
-            valor('st');
+        const rs = valor('rs');
+        const rt = valor('rt');
+        const st = valor('st');
 
 
         if(
-
             !Number.isFinite(rs) ||
             !Number.isFinite(rt) ||
             !Number.isFinite(st)
-
         ){
-
             return;
-
         }
 
 
         const media =
-            (
-                rs +
-                rt +
-                st
-            ) / 3;
+            (rs+rt+st)/3;
 
 
         requestAnimationFrame(
@@ -4281,14 +3369,9 @@ document.addEventListener(
     function(event){
 
         if(
-
-            event.key === 'Enter' &&
-
+            event.key==='Enter' &&
             document.activeElement &&
-
-            document.activeElement.tagName ===
-            'INPUT'
-
+            document.activeElement.tagName==='INPUT'
         ){
 
             calcular();
